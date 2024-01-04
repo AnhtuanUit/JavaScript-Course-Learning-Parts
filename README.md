@@ -2,6 +2,14 @@
 
 Welcome to my Modern JavaScript Developer Course! This repository showcases my journey through the Udemy course "[The Complete JavaScript Course 2024: From Zero to Expert!](https://www.udemy.com/course/the-complete-javascript-course/)." Each project folder corresponds to a specific topic, and the mini-learning web apps within each part are a testament to my progress and understanding of JavaScript.
 
+### Video Demo and Live Application
+
+[![initial Live Video Demo](https://img.youtube.com/vi/n7B8Mtk3E80/maxresdefault.jpg)](https://youtu.be/n7B8Mtk3E80)
+
+Click on the image above or use this 🎬 [Watch the video](https://youtu.be/n7B8Mtk3E80) to watch the demo video.
+
+Explore the live demo: [JavaScript Course Learning Parts Live Demo](https://javascript-course-learning-parts.netlify.app/)
+
 ## Learning Highlights
 
 - **Foundation Building**: Mastered foundational JavaScript concepts, including variables, if/else statements, operators, and more in the [01-Fundamentals-Part-1](./01-Fundamentals-Part-1) section.
