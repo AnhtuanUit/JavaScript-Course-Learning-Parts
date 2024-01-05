@@ -66,6 +66,7 @@ lastName = "Do Anh";
 console.log(lastName);
 */
 
+/*
 // Math Operators
 const now = 2037;
 const ageTuan = now - 1994;
@@ -93,3 +94,18 @@ console.log(ageTuan > ageSarah);
 console.log(ageSarah >= 19);
 
 console.log(now - 1994 > now - 2018);
+*/
+
+// Operator Precedence
+const now = 2037;
+const ageTuan = now - 1994;
+const ageSarah = now - 2018;
+
+console.log(now - 1994 > now - 2018);
+
+let x, y;
+x = y = 25 - 5 - 10; // x = y = 10, x = 10
+console.log(x, y);
+
+const averageAge = (ageSarah + ageTuan) / 2;
+console.log(ageTuan, ageSarah, averageAge);
