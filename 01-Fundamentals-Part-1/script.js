@@ -28,7 +28,8 @@ let job2 = "youtuber";
 console.log(myFirstJob);
 
 */
-
+/*
+// Data Types
 let javascriptIsFun = true;
 console.log(javascriptIsFun);
 
@@ -47,3 +48,17 @@ year = 1994;
 console.log(typeof year);
 
 console.log(typeof null);
+*/
+// let, const and var
+let age = 29;
+age = 30;
+
+const birthYear = 1994;
+// birthYear = 1995;
+// const job;
+
+var job = "programer";
+job = "learner";
+
+lastName = "Do Anh";
+console.log(lastName);
