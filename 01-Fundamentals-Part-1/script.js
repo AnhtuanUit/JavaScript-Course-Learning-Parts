@@ -95,7 +95,7 @@ console.log(ageSarah >= 19);
 
 console.log(now - 1994 > now - 2018);
 */
-
+/*
 // Operator Precedence
 const now = 2037;
 const ageTuan = now - 1994;
@@ -109,3 +109,17 @@ console.log(x, y);
 
 const averageAge = (ageSarah + ageTuan) / 2;
 console.log(ageTuan, ageSarah, averageAge);
+*/
+
+// String and Template Literal
+const firstName = "Tuan";
+const job = "learner";
+const birthYear = 1994;
+const year = 2037;
+
+const tuan =
+  "I'm " + firstName + ", a " + (year - birthYear) + " years old " + job;
+
+console.log(tuan);
+
+console.log(`I'm ${firstName}, a ${year - birthYear} years old ${job}`);
