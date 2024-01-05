@@ -154,7 +154,7 @@ if (birthYear <= 2000) {
 }
 console.log(century);
 */
-
+/*
 // type conversion
 const inputYear = "1994";
 console.log(Number(inputYear), inputYear);
@@ -173,3 +173,25 @@ console.log("23" / "2");
 let n = "1" + 1; // "1" + "1" = "11"
 n--; // 11 - 1 = 10
 console.log(n); // 10
+*/
+
+// 5 falsy values: 0, '', undefined, null, NaN
+console.log(Boolean(0));
+console.log(Boolean(""));
+console.log(Boolean(undefined));
+console.log(Boolean(null));
+console.log(Boolean(NaN));
+
+const money = 0;
+if (money) {
+  console.log("Don't spent it all ;");
+} else {
+  console.log("You should get a job!");
+}
+
+let height = 0;
+if (height) {
+  console.log("YAY! height is defined");
+} else {
+  console.log("height is UNDEFINEND");
+}
