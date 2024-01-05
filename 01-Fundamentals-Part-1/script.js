@@ -123,3 +123,13 @@ const tuan =
 console.log(tuan);
 
 console.log(`I'm ${firstName}, a ${year - birthYear} years old ${job}`);
+
+console.log(
+  "String with\n\
+multiple \n\
+lines"
+);
+
+console.log(`String with
+multiple
+lines`);
