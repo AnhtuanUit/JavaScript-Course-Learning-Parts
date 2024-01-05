@@ -136,6 +136,7 @@ multiple
 lines`);
 */
 
+/*
 const age = 15;
 if (age >= 18) {
   console.log("Sarah can start driving license 🚗");
@@ -152,3 +153,23 @@ if (birthYear <= 2000) {
   century = 21;
 }
 console.log(century);
+*/
+
+// type conversion
+const inputYear = "1994";
+console.log(Number(inputYear), inputYear);
+console.log(Number(inputYear) + 18);
+
+console.log(Number("Tuan"));
+console.log(typeof NaN);
+
+console.log(String(23), 23);
+
+// type coercion
+console.log("I'm " + 23 + " years old");
+console.log("23" - "10" - 3);
+console.log("23" / "2");
+
+let n = "1" + 1; // "1" + "1" = "11"
+n--; // 11 - 1 = 10
+console.log(n); // 10
