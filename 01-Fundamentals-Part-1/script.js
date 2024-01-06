@@ -175,6 +175,7 @@ n--; // 11 - 1 = 10
 console.log(n); // 10
 */
 
+/*
 // 5 falsy values: 0, '', undefined, null, NaN
 console.log(Boolean(0));
 console.log(Boolean(""));
@@ -194,4 +195,22 @@ if (height) {
   console.log("YAY! height is defined");
 } else {
   console.log("height is UNDEFINEND");
+}
+*/
+
+// Equality Operators: == vs. ===
+const favourite = Number(prompt("What's is your favourite number?"));
+
+if (favourite === 23) {
+  console.log("23 is a amazing number");
+} else if (favourite === 9) {
+  console.log("9 also a cool number");
+} else if (favourite === 7) {
+  console.log("7 also a cool number ");
+} else {
+  console.log("Number is not 23, 7 or 9");
+}
+
+if (favourite !== 23) {
+  console.log("Why not 23?");
 }
