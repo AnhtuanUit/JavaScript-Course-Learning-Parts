@@ -242,6 +242,7 @@ if (hasDriversLicense && hasGoodVision && !isTired) {
 }
 */
 
+/*
 // Switch statement
 const day = "saturday";
 
@@ -282,3 +283,18 @@ if (day === "monday") {
 } else {
   console.log("No a valid day");
 }
+*/
+
+// Statements and Expressions
+
+3 + 4; // Expressions
+1994; // Expressions
+true && false && !false; //Expressions
+
+// If statement -> but have expression inside
+
+if (23 > 10) {
+  const str = "23 is bigger";
+}
+const me = "Tuan";
+console.log(`I'm ${2037 - 1994} years old ${me}`);
