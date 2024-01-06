@@ -23,7 +23,8 @@ console.log(appleOrangeJuice);
 
 const num = Number(23);
 */
-
+////////////////////////////////////////////////////////////////
+// Function declaration + Function expresstion
 /*
 const hoistingAge1 = calcAge1(1994);
 
@@ -43,7 +44,7 @@ const age2 = calcAge2(1994);
 
 console.log(age1, age2, hoistingAge1);
 */
-
+////////////////////////////////////////////////////////////////
 /*
 // Arrow function
 const calcAge3 = (birthYear) => 2037 - birthYear;
@@ -60,7 +61,8 @@ const yearsUtilRetirement = (birthYear, firstName) => {
 console.log(yearsUtilRetirement(1994, "Tuan"));
 console.log(yearsUtilRetirement(1981, "Bob"));
 */
-
+////////////////////////////////////////////////////////////////
+/*
 // Functions Calling Other Functions
 function cutFruitPieces(fruit) {
   return fruit * 4;
@@ -74,3 +76,27 @@ function fruitProcess(apples, oranges) {
 }
 
 console.log(fruitProcess(3, 4));
+*/
+////////////////////////////////////////////////////////////////
+
+// Reviewing Functions
+function calcAge(birthYear) {
+  return 2037 - birthYear;
+}
+
+const yearsUtilRetirement = function (birthYear, firstName) {
+  const age = calcAge(birthYear);
+  const retirement = 65 - age;
+  // return retirement;
+
+  if (retirement > 0) {
+    console.log(`${firstName} retires in ${retirement} years`);
+    return retirement;
+  } else {
+    console.log(`${firstName} already retired 👏`);
+    return -1;
+  }
+};
+
+console.log(yearsUtilRetirement(1994, "Tuan"));
+console.log(yearsUtilRetirement(1971, "Bob"));
