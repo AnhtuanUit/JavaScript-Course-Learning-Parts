@@ -284,7 +284,7 @@ if (day === "monday") {
   console.log("No a valid day");
 }
 */
-
+/*
 // Statements and Expressions
 
 3 + 4; // Expressions
@@ -298,3 +298,25 @@ if (23 > 10) {
 }
 const me = "Tuan";
 console.log(`I'm ${2037 - 1994} years old ${me}`);
+*/
+
+// Conditional(ternary) operator
+const age = 18;
+
+age >= 18
+  ? console.log("I like to drink wine 🍷")
+  : console.log("I like to drink water 💧");
+
+let drink;
+if (age >= 18) {
+  drink = "wine 🍷";
+} else {
+  drink = "water 💧";
+}
+
+console.log(`I can dink`, drink);
+
+drink = age >= 18 ? "wine 🍷" : " water 💧";
+
+console.log(drink);
+console.log(`I like to drink ${age >= 18 ? "wine 🍷" : " water 💧"}`);
