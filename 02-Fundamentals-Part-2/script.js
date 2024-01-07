@@ -267,7 +267,7 @@ const tips = [calcTip(bills[0]), calcTip(bills[1]), calcTip(bills[2])];
 const totals = [tips[0] + bills[0], tips[1] + bills[1], tips[2] + bills[2]];
 console.log(tips, totals);
 */
-
+/*
 // Introduction to Objects
 const tuanArray = [
   "Tuan",
@@ -316,3 +316,34 @@ console.log(tuan);
 console.log(
   `${tuan.firstName} has ${tuan.friends.length} friends and his best friend called ${tuan.friends[0]}`
 );
+*/
+
+// Object Methods
+const tuan = {
+  firstName: "Tuan",
+  lastName: "Do",
+  job: "learner",
+  friends: ["Loc", "Phuoc", "Tung", "Duong"],
+  birthYear: 1994,
+  calcAge: function () {
+    this.age = 2037 - this.birthYear;
+    return this.age;
+  },
+  hasDriversLicense: true,
+  getSummary: function () {
+    return `${tuan.firstName} is a ${this.calcAge()} years old, and he has ${
+      tuan.hasDriversLicense ? "a" : "no"
+    } driver's license`;
+  },
+};
+
+// console.log(tuan.calcAge());
+console.log(tuan["calcAge"]());
+
+console.log(tuan.age);
+console.log(tuan.age);
+console.log(tuan.age);
+
+// Challenge
+// "Tuan is a 43 years old, and he has a driver's license"
+console.log(tuan.getSummary());
