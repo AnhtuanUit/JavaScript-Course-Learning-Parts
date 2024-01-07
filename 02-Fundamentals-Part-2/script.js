@@ -256,7 +256,7 @@ TEST DATA: 125, 555, and 44.
 
 */
 /* Write your code below. Good luck! 🙂 */
-
+/*
 const calcTip = (bill) =>
   50 <= bill && bill <= 300 ? bill * 0.15 : bill * 0.2;
 
@@ -266,3 +266,21 @@ const bills = [125, 555, 44];
 const tips = [calcTip(bills[0]), calcTip(bills[1]), calcTip(bills[2])];
 const totals = [tips[0] + bills[0], tips[1] + bills[1], tips[2] + bills[2]];
 console.log(tips, totals);
+*/
+
+// Introduction to Objects
+const tuanArray = [
+  "Tuan",
+  "Do",
+  2037 - 1994,
+  "learner",
+  ["Loc", "Phuoc", "Tung", "Duong"],
+];
+
+const tuan = {
+  firstName: "Tuan",
+  lastName: "Do",
+  age: 2037 - 1994,
+  job: "learner",
+  friends: ["Loc", "Phuoc", "Tung", "Duong"],
+};
