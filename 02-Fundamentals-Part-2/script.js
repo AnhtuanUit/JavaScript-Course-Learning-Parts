@@ -162,7 +162,7 @@ scoreKoalas = calcAverage(23, 34, 27);
 console.log(scoreDolphins, scoreKoalas);
 checkWinner(scoreDolphins, scoreKoalas);
 */
-
+/*
 // Introductions to Arrays
 const friend1 = "Giang";
 const friend2 = "Loc";
@@ -202,3 +202,35 @@ const ages = [
   calcAge(years2[1]),
   calcAge(years2[years2.length - 1]),
 ];
+*/
+
+// 40. Basic Array Operations(Methods)
+const friends = ["Phuoc", "Loc", "Tung"];
+
+// Add elements
+const newLength = friends.push("Duong"); // Add last
+console.log(friends);
+console.log(newLength);
+
+friends.unshift("John"); // Add first
+console.log(friends);
+
+// Remove elements
+friends.pop(); // Last
+const poped = friends.pop();
+console.log(poped);
+
+friends.shift(); // First
+console.log(friends);
+
+console.log(friends.indexOf("Phuoc"));
+console.log(friends.indexOf("Me"));
+
+friends.push(23);
+console.log(friends.includes(23));
+console.log(friends.includes("Phuoc"));
+console.log(friends.includes("Bob"));
+
+if (friends.includes("Phuoc")) {
+  console.log("You have a friend called Phuoc");
+}
