@@ -284,3 +284,35 @@ const tuan = {
   job: "learner",
   friends: ["Loc", "Phuoc", "Tung", "Duong"],
 };
+console.log(tuan);
+console.log(tuan.firstName);
+console.log(tuan["lastName"]);
+
+const nameKey = "Name";
+console.log(tuan["first" + nameKey]);
+console.log(tuan["last" + nameKey]);
+
+const interestedIn = prompt(
+  "What do you want to know about Tuan? Chose between job, firstName, friends, age, and friends"
+);
+
+console.log(interestedIn);
+
+if (tuan[interestedIn]) {
+  console.log(tuan[interestedIn]);
+} else {
+  console.log(
+    "Wrong request! Chose between job, firstName, friends, age, and friends"
+  );
+}
+
+tuan.location = "Ho Chi Minh, Vietnam";
+tuan["linkedin"] = "https://www.linkedin.com/in/at7194/";
+console.log(tuan);
+
+// Challenge
+// "Tuan has 3 friends and his best friend called Loc"
+
+console.log(
+  `${tuan.firstName} has ${tuan.friends.length} friends and his best friend called ${tuan.friends[0]}`
+);
