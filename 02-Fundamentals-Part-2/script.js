@@ -137,7 +137,7 @@ TEST DATA 2: Dolphins scored 85, 54, and 41. Koalas scored 23, 34, and 27.
 */
 
 /* Write your code below. Good luck! 🙂 */
-
+/*
 // TEST 1
 const calcAverage = (score1, score2, score3) => (score1 + score2 + score3) / 3;
 
@@ -161,3 +161,44 @@ scoreDolphins = calcAverage(85, 54, 41);
 scoreKoalas = calcAverage(23, 34, 27);
 console.log(scoreDolphins, scoreKoalas);
 checkWinner(scoreDolphins, scoreKoalas);
+*/
+
+// Introductions to Arrays
+const friend1 = "Giang";
+const friend2 = "Loc";
+const friend3 = "Huy";
+
+const friends = ["Loc", "Phuoc", "Tung"];
+console.log(friends);
+const years = new Array(1994, 1993, 1995, 2000);
+console.log(friends[0]);
+console.log(friends[1]);
+console.log(friends.length);
+
+console.log(friends[friends.length - 1]);
+
+friends[2] = "Me";
+console.log(friends);
+const firstName = "Tuan";
+
+const tuan = [firstName, "Do", 2037 - 1994, "leaner", friends];
+console.log(tuan);
+console.log(tuan.length);
+
+// Exericise
+const calcAge = function (birthYear) {
+  return 2037 - birthYear;
+};
+
+const years2 = [1991, 1994, 2000, 2005];
+
+const age1 = calcAge(years2[0]);
+const age2 = calcAge(years2[1]);
+const age3 = calcAge(years2[2]);
+console.log(age1, age2, age3);
+
+const ages = [
+  calcAge(years2[0]),
+  calcAge(years2[1]),
+  calcAge(years2[years2.length - 1]),
+];
