@@ -413,6 +413,50 @@ if (mark.bmi > john.bmi) {
 // console.log("Lifting weights repetition 9 🏋🏼");
 // console.log("Lifting weights repetition 10 🏋🏼");
 
-for (let rep = 1; rep <= 10; rep++) {
-  console.log(`Lifting weights repetition ${rep} 🏋🏼`);
+// for (let rep = 1; rep <= 10; rep++) {
+//   console.log(`Lifting weights repetition ${rep} 🏋🏼`);
+// }
+
+const types = [];
+// Looping Arrays, Rreaking and Continuing
+const tuanArray = [
+  "Tuan",
+  "Do",
+  2037 - 1994,
+  "learner",
+  ["Loc", "Phuoc", "Tung", "Duong"],
+  true,
+];
+
+for (let i = 0; i < tuanArray.length; i++) {
+  // Read from tuan array
+  console.log(tuanArray[i], typeof tuanArray[i]);
+
+  // Filling types array
+  types[i] = typeof tuanArray[i];
+  // types[i] = typeof tuanArray[i];
+}
+
+console.log(types);
+
+const years = [1991, 1997, 2000, 2005];
+const ages = [];
+
+for (let i = 0; i < years.length; i++) {
+  ages.push(2037 - years[i]);
+}
+
+console.log(ages);
+
+// continute and break
+console.log("---- ONLY STRINGS ---");
+for (let i = 0; i < tuanArray.length; i++) {
+  if (typeof tuanArray[i] !== "string") continue;
+  console.log(tuanArray[i], typeof tuanArray[i]);
+}
+
+console.log("---- BREAK WITH NUMBER ---");
+for (let i = 0; i < tuanArray.length; i++) {
+  if (typeof tuanArray[i] === "number") break;
+  console.log(tuanArray[i], typeof tuanArray[i]);
 }
