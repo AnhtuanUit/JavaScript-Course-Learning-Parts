@@ -25,7 +25,7 @@ const temperatures = [3, -2, -6, -1, 'error', 9, 13, 17, 15, 14, 9, 5];
 // - Find max value in array
 // - Find min value in array
 // - Subtract min from max(amplitude) then return it
-
+/*
 const calcTempAmplitude = temps => {
   let min = temps[0];
   let max = temps[0];
@@ -64,3 +64,39 @@ const calcTempAmplitudeNew = (t1, t2) => {
 };
 
 console.log(calcTempAmplitudeNew(temperatures, [2, 3, 100]));
+*/
+
+// Debugging with the Console and Breakpoints
+const mesureKevil = () => {
+  const mesurement = {
+    type: 'temp',
+    unit: 'celcius',
+    value: 10,
+    // C) FIX
+    // value: Number(prompt('Degrees celcius:')),
+    // value: prompt('Degrees celcius:'),
+  };
+  // B) FIND
+  console.log(mesurement.value);
+  const kelvin = mesurement.value + 273;
+  return kelvin;
+};
+
+// A) IDENTIFY
+console.log(mesureKevil());
+
+// debugger
+const calcTempAmplitudeBug = (t1, t2) => {
+  const temps = t1.concat(t2);
+  let min = temps[0];
+  let max = temps[0];
+  for (let i = 0; i < temps.length; i++) {
+    const temp = temps[i];
+    if (temp === 'error') continue;
+    if (min > temp) min = temp;
+    if (max < temp) max = temp;
+  }
+  console.log(min, max);
+  return max - min;
+};
+console.log(calcTempAmplitudeBug(temperatures, [2, 3, 100]));
