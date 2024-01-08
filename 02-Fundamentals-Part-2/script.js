@@ -417,8 +417,9 @@ if (mark.bmi > john.bmi) {
 //   console.log(`Lifting weights repetition ${rep} 🏋🏼`);
 // }
 
+/*
 const types = [];
-// Looping Arrays, Rreaking and Continuing
+// Looping Arrays, Breaking and Continuing
 const tuanArray = [
   "Tuan",
   "Do",
@@ -459,4 +460,29 @@ console.log("---- BREAK WITH NUMBER ---");
 for (let i = 0; i < tuanArray.length; i++) {
   if (typeof tuanArray[i] === "number") break;
   console.log(tuanArray[i], typeof tuanArray[i]);
+}
+*/
+
+// Looping Backwards and Loops in Loops
+
+// 4, 3, ..., 0
+const tuanArray = [
+  "Tuan",
+  "Do",
+  2037 - 1994,
+  "learner",
+  ["Loc", "Phuoc", "Tung", "Duong"],
+  true,
+];
+
+for (let i = tuanArray.length - 1; i >= 0; i--) {
+  console.log(tuanArray[i]);
+}
+
+for (let exercise = 1; exercise <= 4; exercise++) {
+  console.log(`---- STARTING EXERCISE ${exercise} ----`);
+
+  for (let rep = 1; rep <= 5; rep++) {
+    console.log(`Exercise ${exercise}: Lift weight repeatition ${rep}`);
+  }
 }
