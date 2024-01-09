@@ -81,3 +81,28 @@ btnHold.addEventListener('click', function () {
     switchPlayer();
   }
 });
+
+btnNewGame.addEventListener('click', function () {
+  // 1. Update currentScore = 0
+  // 2. Update scores = [0, 0]
+  // 3. Update playing = true
+  // 4. Update activePlayer = 0;
+  currentScore = 0;
+  scores = [0, 0];
+  activePlayer = 0;
+  playing = true;
+
+  // 5. Display currentScore of current player = 0
+  document.getElementById(`current--0`).textContent = 0;
+  document.getElementById(`current--1`).textContent = 0;
+  // 6. Display total score of each player = 0
+  score0El.textContent = 0;
+  score1El.textContent = 0;
+  // 7. Revove class player-winner from activePlayer
+  document
+    .querySelector(`.player--${activePlayer}`)
+    .classList.remove('player--winner');
+  // 8. Update player--active to player--0, remove from player--1
+  document.querySelector(`.player--0`).classList.add('player--active');
+  document.querySelector(`.player--1`).classList.remove('player--active');
+});
