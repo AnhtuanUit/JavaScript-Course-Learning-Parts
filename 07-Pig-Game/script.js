@@ -15,6 +15,15 @@ score0El.textContent = 0;
 score1El.textContent = 0;
 diceEl.classList.add('hidden');
 
+function getWinningScore() {
+  const queryString = window.location.search;
+  const urlParams = new URLSearchParams(queryString);
+  return urlParams.get('winningScore')
+    ? Number(urlParams.get('winningScore'))
+    : 100;
+}
+
+const winningScore = getWinningScore();
 let currentScore = 0;
 let scores = [0, 0];
 let activePlayer = 0;
@@ -55,7 +64,7 @@ btnRoll.addEventListener('click', function () {
 
       // Check if score >= 100 -> Diplay current user win
       const nextMaybeTotalScore = currentScore + scores[activePlayer];
-      if (nextMaybeTotalScore >= 100) {
+      if (nextMaybeTotalScore >= winningScore) {
         document
           .querySelector(`.player--${activePlayer}`)
           .classList.add('player--winner');
