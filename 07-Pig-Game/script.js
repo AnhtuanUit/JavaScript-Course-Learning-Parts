@@ -108,9 +108,8 @@ btnNewGame.addEventListener('click', function () {
   score0El.textContent = 0;
   score1El.textContent = 0;
   // 7. Revove class player-winner from activePlayer
-  document
-    .querySelector(`.player--${activePlayer}`)
-    .classList.remove('player--winner');
+  document.querySelector(`.player--0`).classList.remove('player--winner');
+  document.querySelector(`.player--1`).classList.remove('player--winner');
   // 8. Update player--active to player--0, remove from player--1
   document.querySelector(`.player--0`).classList.add('player--active');
   document.querySelector(`.player--1`).classList.remove('player--active');
