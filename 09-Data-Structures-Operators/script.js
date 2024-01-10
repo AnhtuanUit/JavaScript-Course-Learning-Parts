@@ -132,6 +132,7 @@ const [p = 1, q = 1, r = 1] = [1, 0];
 console.log(p, q, r);
 */
 
+/*
 // The Spread Operator (...)
 
 const arr = [7, 8, 9];
@@ -173,3 +174,4 @@ console.log(newRestaurant);
 const restaurantCopy = { ...restaurant };
 restaurantCopy.name = 'Ristorante Roma';
 console.log(restaurantCopy.name, restaurant.name);
+*/
