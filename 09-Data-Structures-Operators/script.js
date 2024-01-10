@@ -180,6 +180,8 @@ const restaurantCopy = { ...restaurant };
 restaurantCopy.name = 'Ristorante Roma';
 console.log(restaurantCopy.name, restaurant.name);
 */
+
+/*
 // 1) Destructuring
 // SPREAD, because on RIGHT side of =
 const arr = [1, 2, ...[3, 4]];
@@ -223,3 +225,4 @@ add(...x);
 //
 restaurant.orderPizza('mushrooms', 'onion', 'olives', 'spinach');
 restaurant.orderPizza('mushrooms');
+*/
