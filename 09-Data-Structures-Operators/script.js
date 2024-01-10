@@ -49,6 +49,11 @@ const restaurant = {
       `Here is your delicious pasta with: ${ing1}, ${ing2} and ${ing3}`
     );
   },
+
+  orderPizza: function (mainIngredient, ...ortherIngredients) {
+    console.log(mainIngredient);
+    console.log(ortherIngredients);
+  },
 };
 /*
 // Destructuring Objects
@@ -175,3 +180,46 @@ const restaurantCopy = { ...restaurant };
 restaurantCopy.name = 'Ristorante Roma';
 console.log(restaurantCopy.name, restaurant.name);
 */
+// 1) Destructuring
+// SPREAD, because on RIGHT side of =
+const arr = [1, 2, ...[3, 4]];
+console.log(arr);
+
+// REST, because on LEFT side of =
+const [a, b, ...numbers] = [1, 2, 3, 4, 5];
+console.log(a, b, numbers);
+
+//
+const arrMenu = [...restaurant.mainMenu, ...restaurant.starterMenu];
+console.log(arrMenu);
+const [pizza, , risotto, ...ortherFood] = arrMenu;
+console.log(pizza, risotto, ortherFood);
+
+// Objects
+const { sat, ...weekdays } = restaurant.openingHours;
+console.log(sat, weekdays);
+
+//
+const { m, ...w } = { x: 1, y: 2, z: 3 };
+console.log(m, w);
+
+// Function
+function add(...numbers) {
+  let sum = 0;
+  for (let i = 0; i < numbers.length; i++) {
+    sum += numbers[i];
+  }
+  console.log(sum);
+  return sum;
+}
+
+add(1, 2);
+add(1, 2, 3, 4);
+add(1, 2, 3, 4, 5, 6);
+
+const x = [2, 3, 4, 5];
+add(...x);
+
+//
+restaurant.orderPizza('mushrooms', 'onion', 'olives', 'spinach');
+restaurant.orderPizza('mushrooms');
