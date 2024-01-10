@@ -226,7 +226,7 @@ add(...x);
 restaurant.orderPizza('mushrooms', 'onion', 'olives', 'spinach');
 restaurant.orderPizza('mushrooms');
 */
-
+/*
 ///////////////////////////////////////
 // Short Circuiting (&& and ||)
 
@@ -258,3 +258,4 @@ if (restaurant.orderPizza) {
 }
 
 restaurant.orderPizza && restaurant.orderPizza('mushrooms', 'spinach');
+*/
