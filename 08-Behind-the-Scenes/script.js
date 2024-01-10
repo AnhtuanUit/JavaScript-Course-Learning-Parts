@@ -86,6 +86,7 @@ console.log(y === window.y);
 console.log(z === window.z);
 */
 
+/*
 // The this Keyword in pratice
 console.log(this);
 
@@ -127,3 +128,54 @@ matilda.calcAge = tuan.calcAge;
 matilda.calcAge();
 const f = tuan.calcAge;
 // f();
+*/
+
+// Regular Functions vs. Arrow Functions
+const tuan = {
+  firstName: 'Tuan',
+  birthYear: 1994,
+  calcAge: function () {
+    console.log(this);
+    console.log(2037 - this.birthYear);
+    // Solution 1
+    // const seft = this;
+    // const isMillenial = function () {
+    //   console.log(this);
+    //   console.log(seft);
+    //   console.log(seft.birthYear >= 1981 && seft.birthYear <= 1996);
+    // };
+
+    // Solution 1
+    const isMillenial = () => {
+      console.log(this);
+      console.log(this.birthYear >= 1981 && this.birthYear <= 1996);
+    };
+    isMillenial();
+    return 2037 - this.birthYear;
+  },
+  greet: () => {
+    console.log(this);
+    console.log(`Hey, my name is ${this.firstName}`);
+  },
+};
+
+tuan.greet();
+tuan.calcAge();
+
+function addDecl(a, b) {
+  console.log(arguments);
+  return a + b;
+}
+
+var addExpr = function (a, b) {
+  console.log(arguments);
+  return a + b;
+};
+
+var addArrow = (a, b) => {
+  // console.log(arguments);
+  return a + b;
+};
+addDecl(1, 2, 3);
+addExpr(1, 2, 3);
+addArrow(1, 2, 3);
