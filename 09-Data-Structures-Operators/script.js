@@ -29,9 +29,65 @@ const restaurant = {
   order: function (starterIndex, mainIndex) {
     return [this.mainMenu[starterIndex], this.mainMenu[mainIndex]];
   },
+
+  // Utilizing object destructuring to extract and use specific properties
+  // from the passed object parameter, enhancing code readability and conciseness.
+  // Default values are employed for 'time' and 'mainIndex' for added flexibility.
+  orderDelivery: function ({
+    time = '10:30',
+    mainIndex = 2,
+    starterIndex,
+    address,
+  }) {
+    console.log(
+      `Order recieved: ${this.starterMenu[starterIndex]} and ${this.mainMenu[mainIndex]} will be delivered to ${address} at ${time}`
+    );
+  },
 };
+
+// Destructuring Objects
+const { name, openingHours, categories } = restaurant;
+// console.log(name, openingHours, categories);
+
+const {
+  name: restaurantName,
+  openingHours: hours,
+  categories: tags,
+} = restaurant;
+// console.log(restaurantName, hours, tags);
+
+// Default values
+const { menu = [], starterMenu = [] } = restaurant;
+console.log(menu, starterMenu);
+
+// Mutating variables
+let a = 100;
+let b = 200;
+const obj = { a: 1, b: 2, c: 3 };
+({ a, b } = obj);
+console.log(a, b);
+
+// Nested objects
+const {
+  fri: { open: o, close: c },
+} = openingHours;
+console.log(o, c);
+
+//
+restaurant.orderDelivery({
+  time: '20:30',
+  address: 'Binh Thanh District, Ho Chi Minh City',
+  mainIndex: 2,
+  starterIndex: 2,
+});
+
+restaurant.orderDelivery({
+  address: 'Binh Thanh District, Ho Chi Minh City',
+  starterIndex: 2,
+});
+
 /*
-// Desctructuring Arrays
+// Destructuring Arrays
 const arr = [2, 3, 4];
 const a = arr[0];
 const b = arr[1];
