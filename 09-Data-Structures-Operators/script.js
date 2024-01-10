@@ -270,6 +270,8 @@ console.log(guests);
 const guestCorrect = restaurant.numGuests ?? 10;
 console.log(guestCorrect);
 */
+
+/*
 /////////////////////////////////
 // Logical Assignment Operators
 
@@ -304,3 +306,4 @@ const rest2 = {
 rest1.owner &&= '<ANONYMOUS>';
 rest2.owner &&= '<ANONYMOUS>';
 console.log(rest1, rest2);
+*/
