@@ -30,7 +30,7 @@ const restaurant = {
     return [this.mainMenu[starterIndex], this.mainMenu[mainIndex]];
   },
 };
-
+/*
 // Desctructuring Arrays
 const arr = [2, 3, 4];
 const a = arr[0];
@@ -67,3 +67,4 @@ console.log(i, j, k);
 // Default values
 const [p = 1, q = 1, r = 1] = [1, 0];
 console.log(p, q, r);
+*/
