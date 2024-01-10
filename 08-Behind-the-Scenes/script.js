@@ -130,6 +130,7 @@ const f = tuan.calcAge;
 // f();
 */
 
+/*
 // Regular Functions vs. Arrow Functions
 const tuan = {
   firstName: 'Tuan',
@@ -179,3 +180,21 @@ var addArrow = (a, b) => {
 addDecl(1, 2, 3);
 addExpr(1, 2, 3);
 addArrow(1, 2, 3);
+*/
+
+// Primitives vs. Objects(Primitives vs. Reference Types)
+let age = 30;
+let oldAge = age;
+age = 31;
+console.log(age, oldAge);
+
+const me = {
+  firstName: 'Tuan',
+  age: 30,
+};
+
+const friend = me;
+friend.age = 27;
+
+console.log('Friend', friend);
+console.log('Me', me);
