@@ -43,6 +43,7 @@ const add = (a, b) => {
 // Attempting to log 'test' outside its scope
 // console.log(test); // This will result in an error because 'test' is not accessible outside the add function.
 */
+/*
 // Hosting and TDZ in Pratice
 
 console.log(me);
@@ -83,3 +84,46 @@ const z = 3;
 console.log(x === window.x);
 console.log(y === window.y);
 console.log(z === window.z);
+*/
+
+// The this Keyword in pratice
+console.log(this);
+
+// function calcAge(birthYear) {
+//   console.log(2037 - birthYear);
+//   console.log(this);
+// }
+
+// Regular function call without being attached to any specific object or context
+
+const calcAge = function (birthYear) {
+  console.log(2037 - birthYear);
+  console.log(this);
+};
+calcAge(1994);
+
+const calcAgeArrow = birthYear => {
+  console.log(2037 - birthYear);
+  console.log(this);
+};
+calcAgeArrow(1994);
+
+const tuan = {
+  birthYear: 1994,
+  calcAge: function () {
+    console.log(this);
+    console.log(2037 - this.birthYear);
+    return 2037 - this.birthYear;
+  },
+};
+
+tuan.calcAge();
+
+const matilda = {
+  birthYear: 2017,
+};
+
+matilda.calcAge = tuan.calcAge;
+matilda.calcAge();
+const f = tuan.calcAge;
+// f();
