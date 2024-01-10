@@ -44,7 +44,7 @@ const restaurant = {
     );
   },
 };
-
+/*
 // Destructuring Objects
 const { name, openingHours, categories } = restaurant;
 // console.log(name, openingHours, categories);
@@ -85,6 +85,7 @@ restaurant.orderDelivery({
   address: 'Binh Thanh District, Ho Chi Minh City',
   starterIndex: 2,
 });
+*/
 
 /*
 // Destructuring Arrays
