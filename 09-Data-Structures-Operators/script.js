@@ -43,6 +43,12 @@ const restaurant = {
       `Order recieved: ${this.starterMenu[starterIndex]} and ${this.mainMenu[mainIndex]} will be delivered to ${address} at ${time}`
     );
   },
+
+  orderPasta: function (ing1, ing2, ing3) {
+    console.log(
+      `Here is your delicious pasta with: ${ing1}, ${ing2} and ${ing3}`
+    );
+  },
 };
 /*
 // Destructuring Objects
@@ -125,3 +131,45 @@ console.log(i, j, k);
 const [p = 1, q = 1, r = 1] = [1, 0];
 console.log(p, q, r);
 */
+
+// The Spread Operator (...)
+
+const arr = [7, 8, 9];
+const badNewArr = [1, 2, arr[0], arr[1], arr[2]];
+console.log(badNewArr);
+
+const newArr = [1, 2, ...arr];
+console.log(newArr);
+
+const newMenu = [...restaurant.mainMenu, ...restaurant.starterMenu, 'Gnocci'];
+console.log(newMenu);
+
+// Copy array
+const copyMeny = [...restaurant.mainMenu, ...restaurant.starterMenu];
+console.log(copyMeny);
+
+// Interables: arrays, strings, maps, sets. NOT objects
+const str = 'Tuan';
+const letters = [...str, ' ', '.AT'];
+console.log(letters);
+console.log(...str);
+// console.log(`Do Anh ${...str}`);
+
+// Real-world example
+const ingredients = [
+  prompt('Let make pasta: Ingredient 1?'),
+  prompt('Ingredient 2?'),
+  prompt('Ingredient 3?'),
+];
+console.log(ingredients);
+
+restaurant.orderPasta(ingredients[0], ingredients[1], ingredients[2]);
+restaurant.orderPasta(...ingredients);
+
+// Objects
+const newRestaurant = { foundIn: 1980, ...restaurant, founder: 'Guiseppe' };
+console.log(newRestaurant);
+
+const restaurantCopy = { ...restaurant };
+restaurantCopy.name = 'Ristorante Roma';
+console.log(restaurantCopy.name, restaurant.name);
