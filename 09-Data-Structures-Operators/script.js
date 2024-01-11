@@ -407,11 +407,11 @@ function printGoals(...playerNames) {
 
 //////////////////////////////////////////////////
 // Looping Arrays: The for-of Loop
-const menu = [...restaurant.mainMenu, ...restaurant.starterMenu];
+/* const menu = [...restaurant.mainMenu, ...restaurant.starterMenu];
 
 for (const item of menu) console.log(item);
 
 for (const [i, el] of menu.entries()) {
   console.log(`${i + 1}: ${el}`);
-}
+} */
 //////////////////////////////////////////////////
