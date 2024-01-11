@@ -461,7 +461,7 @@ BONUS: Create an object called 'scorers' which contains the names of the players
 GOOD LUCK 😀
 */
 
-console.log(game);
+/* console.log(game);
 // 1. Loop over the game.scored array and print each player name to the console, along with the goal number (Example: "Goal 1: Lewandowski")
 for (const [i, playerName] of game.scored.entries()) {
   console.log(`Goal ${i + 1}: ${playerName}`);
@@ -497,3 +497,34 @@ const scorers = {};
 for (const player of game.scored) scorers[player] = (scorers[player] || 0) + 1;
 
 console.log(scorers);
+ */
+////////////////////////////////////////////////
+// Sets
+const ordersSet = new Set(['Pasta', 'Pizza', 'Risotto', 'Pasta', 'Pizza']);
+
+console.log(ordersSet);
+
+console.log(new Set('Do Anh Tuan'));
+
+console.log(ordersSet.size);
+console.log(ordersSet.has('Pizza'));
+console.log(ordersSet.has('Bread'));
+
+ordersSet.add('Garlic Bread');
+ordersSet.add('Garlic Bread');
+ordersSet.delete('Risotto');
+// ordersSet.clear();
+console.log(ordersSet);
+
+for (const order of ordersSet) console.log(order);
+
+// Example
+const staff = ['Waiter', 'Chef', 'Waiter', 'Manager', 'Chef', 'Waiter'];
+const staffUnique = [...new Set(staff)];
+console.log(staffUnique);
+
+console.log(
+  new Set(['Waiter', 'Chef', 'Waiter', 'Manager', 'Chef', 'Waiter']).size
+);
+
+console.log(new Set('Tuan').size);
