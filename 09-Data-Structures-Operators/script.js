@@ -500,7 +500,7 @@ console.log(scorers);
  */
 ////////////////////////////////////////////////
 // Sets
-const ordersSet = new Set(['Pasta', 'Pizza', 'Risotto', 'Pasta', 'Pizza']);
+/* const ordersSet = new Set(['Pasta', 'Pizza', 'Risotto', 'Pasta', 'Pizza']);
 
 console.log(ordersSet);
 
@@ -528,3 +528,4 @@ console.log(
 );
 
 console.log(new Set('Tuan').size);
+ */
