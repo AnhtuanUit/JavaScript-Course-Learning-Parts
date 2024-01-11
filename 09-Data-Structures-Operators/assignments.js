@@ -458,7 +458,7 @@ const entries = [];
 for (const key of Object.keys(books[0].thirdParty.goodreads)) {
   entries.push([key]);
 }
-console.log(entries);
+// console.log(entries);
 // 11.2
 // The Object.values() method returns an array, which means you can call the Array's entries() method on it, for example, Object.entries(books[0].thirdParty.goodreads).entries(). The Array's entries() method returns [index, value] arrays for each element in the array.
 
@@ -470,15 +470,52 @@ for (const [index, value] of Object.values(
 ).entries()) {
   entries[index].push(value);
 }
-console.log(entries);
+// console.log(entries);
 
 // 11.3
 // Use the Object.entries() method on the thirdParty.goodreads property of the first book from the books array. Assign the returned value to the variable called entries2.
 const entries2 = Object.entries(books[0].thirdParty.goodreads);
-console.log(entries2);
+// console.log(entries2);
 
 // 11.4
 // Log the entries and entries2 variables to the console, and compare them. They should look the same.
 // Log the entries and entries2 variables to the console, and compare them. They should look the same.
-console.log(entries);
-console.log(entries2);
+// console.log(entries);
+// console.log(entries2);
+////////////////////////////////////////////////
+// Sets
+// 12.1
+// Below is the allKeywords variable, which stores an empty array. Loop over the books array, and fill the allKeywords array with the keywords coming from the keywords property of each book object. The allKeywords array should have just one level (no nested arrays).
+
+// Use whatever loop and methods you want. You can also use the spread syntax. In the end, the allKeywords array should look more or less like this: ['computer science', 'programming', 'algorithms', 'data structures', ...].
+const allKeywords = [];
+for (const { keywords } of books) {
+  allKeywords.push(...keywords);
+}
+console.log(allKeywords);
+
+// 12.2
+// The allKeyword array contains duplicates. Remove them by creating a Set out of that array. Assign the newly created set to the uniqueKeywords variable.
+const uniqueKeywords = new Set(allKeywords);
+console.log(uniqueKeywords);
+
+// 12.3
+// Add two more keywords to the uniqueKeywords set, for example, 'coding' and 'science'.
+uniqueKeywords.add('coding');
+uniqueKeywords.add('science');
+console.log(uniqueKeywords);
+
+// 12.4
+// Delete 'business' from the uniqueKeywords set.
+uniqueKeywords.delete('business');
+console.log(uniqueKeywords);
+
+// 12.5
+// Create an array out of the uniqueKeywords set, and assign it to the uniqueKeywordsArr variable.
+const uniqueKeywordsArr = [...uniqueKeywords];
+console.log(uniqueKeywordsArr);
+
+// 12.6
+// Delete all items from the uniqueKeywords set.
+uniqueKeywords.clear();
+console.log(uniqueKeywords);
