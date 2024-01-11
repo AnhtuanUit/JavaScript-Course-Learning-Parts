@@ -415,7 +415,7 @@ const newBook = {
   [bookData[1][0]]: bookData[1][1],
   [bookData[2][0]]: bookData[2][1],
 };
-console.log(newBook);
+// console.log(newBook);
 
 // 9.2
 // Below is the pages variable. Add it as a property of the newBook2 object. Use the shorter way.
