@@ -389,7 +389,7 @@ const players1Final = [...players1, 'Thiago', 'Coutinho', 'Perisic'];
 const {
   odds: { team1, x: draw, team2 },
 } = game;
-console.log(team1, team2, draw);
+// console.log(team1, team2, draw);
 
 // 6. Write a function ('printGoals') that receives an arbitrary number of player names (NOT an array) and prints each of them to the console, along with the number of goals that were scored in total (number of player names passed in)
 
@@ -397,10 +397,21 @@ function printGoals(...playerNames) {
   console.log(`${playerNames.length} goals were scored`);
 }
 
-printGoals('Davies', 'Muller', 'Lewandowski', 'Kimmich');
-printGoals(...game.score);
+// printGoals('Davies', 'Muller', 'Lewandowski', 'Kimmich');
+// printGoals(...game.score);
 
 // 7. The team with the lower odd is more likely to win. Print to the console which team is more likely to win, WITHOUT using an if/else statement or the ternary operator.
 
-team1 < team2 && console.log(`Team 1 more likely to win`);
-team1 > team2 && console.log(`Team 2 more likely to win`);
+// team1 < team2 && console.log(`Team 1 more likely to win`);
+// team1 > team2 && console.log(`Team 2 more likely to win`);
+
+//////////////////////////////////////////////////
+// Looping Arrays: The for-of Loop
+const menu = [...restaurant.mainMenu, ...restaurant.starterMenu];
+
+for (const item of menu) console.log(item);
+
+for (const [i, el] of menu.entries()) {
+  console.log(`${i + 1}: ${el}`);
+}
+//////////////////////////////////////////////////
