@@ -579,7 +579,7 @@ for (const [min, event] of gameEvents) {
  */
 ////////////////////////////////////////////////
 // Working With Strings - Part 1
-const airline = 'TAP air portugal';
+/* const airline = 'TAP air portugal';
 const plane = 'A320';
 
 console.log(plane[0]);
@@ -616,3 +616,5 @@ checkMiddleSeat('3E');
 console.log(new String('Tuan'));
 console.log(typeof new String('Tuan'));
 console.log(typeof new String('Tuan').slice(1));
+console.log(typeof new String('Tuan').slice(1));
+console.log(typeof new String('Tuan').slice(1)); */
