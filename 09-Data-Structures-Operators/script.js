@@ -765,7 +765,7 @@ Afterwards, test with your own test data!
 GOOD LUCK 😀
 */
 
-document.body.append(document.createElement('textarea'));
+/* document.body.append(document.createElement('textarea'));
 document.body.append(document.createElement('button'));
 
 document.querySelector('button').addEventListener('click', function () {
@@ -778,4 +778,27 @@ document.querySelector('button').addEventListener('click', function () {
     )}${last.replace(last[0], last[0].toUpperCase())}`.padEnd(20, ' ');
     console.log(`${formatText}${'✅'.repeat(i + 1)}`);
   }
-});
+}); */
+////////////////////////////////////////////////
+// String Methods Pratice
+// console.log(flights);
+
+// 🔴 Delayed Departure from FAO to TXL (11h25)
+//              Arrival from BRU to FAO (11h45)
+//   🔴 Delayed Arrival from HEL to FAO (12h05)
+//            Departure from FAO to LIS (12h30)
+
+const getCode = str => str.slice(0, 3).toUpperCase();
+
+for (const flight of flights.split('+')) {
+  const [type, from, to, time] = flight.split(';');
+  console.log(
+    `${type.startsWith('_Delayed') ? '🔴' : ''}${type.replaceAll(
+      '_',
+      ' '
+    )} from ${getCode(from)} to ${getCode(to)} (${time.replace(
+      ':',
+      'h'
+    )})`.padStart(45, ' ')
+  );
+}
