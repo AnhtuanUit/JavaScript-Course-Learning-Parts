@@ -658,7 +658,7 @@ function logBookTheme(title) {
 function logBookCategories(str) {
   const categories = str.split(';');
   for (const word of categories) {
-    console.log(word);
+    // console.log(word);
   }
 }
 const bookCategories =
@@ -681,7 +681,7 @@ function getKeywordsAsString(array) {
   const uniqueKeywords = [...new Set(allKeywords)];
   return uniqueKeywords.join(';');
 }
-console.log(getKeywordsAsString(books));
+// console.log(getKeywordsAsString(books));
 
 // 17.3
 // Below is the bookChapters array that contains inner arrays. Each inner array consists of a chapter's title, and the number of a page, for example, in ['The Basics', 14], 'The Basics' is the chapter's title, and 14 is the number of a page.
@@ -707,7 +707,7 @@ Strings_____________ 706 */
 
 function logBookChapters(arr) {
   for (const [title, pages] of arr) {
-    console.log(`${title.padEnd(20, '_')} ${pages}`);
+    // console.log(`${title.padEnd(20, '_')} ${pages}`);
   }
 }
 
