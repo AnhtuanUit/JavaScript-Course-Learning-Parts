@@ -621,7 +621,7 @@ console.log(typeof new String('Tuan').slice(1)); */
 
 ////////////////////////////////////////////////
 // Working With Strings - Part 2
-const airline = 'TAP Air Portual';
+/* const airline = 'TAP Air Portual';
 
 console.log(airline.toLocaleLowerCase());
 console.log(airline.toUpperCase());
@@ -681,4 +681,4 @@ const checkBaggage = function (items) {
 };
 checkBaggage('I have a laptop, some Food and a pocket Knife');
 checkBaggage('Socks and camera');
-checkBaggage('Got some snacks and a gun for protection');
+checkBaggage('Got some snacks and a gun for protection'); */
