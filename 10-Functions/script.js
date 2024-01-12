@@ -66,7 +66,7 @@ checkIn(flight, tuan);
 ////////////////////////////////////////////////\
 // Function Accepting Callback Functions
 // Create oneWord function
-const oneWord = str => {
+/* const oneWord = str => {
   return str.replace(/ /g, '').toLowerCase();
 };
 // Create upperFirstWord function
@@ -90,3 +90,21 @@ document.body.addEventListener('click', high5);
 
 // High5 5 times with arrays ['Jonas', 'Martha', 'Adam']
 ['Jonas', 'Martha', 'Adam'].forEach(high5);
+ */
+////////////////////////////////////////////////
+// Functions Returning Functions
+const greet = function (greeting) {
+  return function (name) {
+    console.log(`${greeting} ${name}`);
+  };
+};
+
+const greetHey = greet('Hey');
+greetHey('Tuan');
+greetHey('Steven');
+
+greet('Hello')('Tuan');
+
+// Challenge
+const greetArr = greeting => name => console.log(`${greeting} ${name}`);
+greetArr('Arrow - Hello')('Tuan');
