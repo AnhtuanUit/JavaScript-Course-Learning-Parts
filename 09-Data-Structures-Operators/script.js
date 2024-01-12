@@ -687,7 +687,7 @@ checkBaggage('Got some snacks and a gun for protection'); */
 // Working With Strings - Part 3
 
 // Split and join
-console.log('a+very+nice+string'.split('+'));
+/* console.log('a+very+nice+string'.split('+'));
 console.log('Tuan Do'.split(' '));
 
 const [firstName, lastName] = 'Tuan Do'.split(' ');
@@ -732,3 +732,4 @@ const planesInLine = function (n) {
 planesInLine(5);
 planesInLine(3);
 planesInLine(12);
+ */
