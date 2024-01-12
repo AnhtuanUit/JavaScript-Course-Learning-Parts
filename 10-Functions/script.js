@@ -30,7 +30,7 @@ createBooking('LH123', undefined, 1000); */
 ////////////////////////////////////////////////
 // How Passing Arguments Works: Values vs. Reference
 // 1) Primitives Values
-const flight = 'LH234';
+/* const flight = 'LH234';
 // 2) Object(Reference Values)
 const tuan = {
   name: 'Tuan Do',
@@ -62,3 +62,31 @@ const newPassport = function (person) {
 
 newPassport(tuan);
 checkIn(flight, tuan);
+ */
+////////////////////////////////////////////////\
+// Function Accepting Callback Functions
+// Create oneWord function
+const oneWord = str => {
+  return str.replace(/ /g, '').toLowerCase();
+};
+// Create upperFirstWord function
+const upperFirstWord = str => {
+  const [first, ...orthers] = str.split(' ');
+  return [first.toUpperCase(), ...orthers].join(' ');
+};
+// Create higher-order function
+const transformer = (str, fn) => {
+  console.log(`Original string: ${str}`);
+  console.log(`Transformed string: ${fn(str)}`);
+  console.log(`Transformed by: ${fn.name}`);
+};
+transformer('JavaScript is the best!', upperFirstWord);
+transformer('JavaScript is the best!', oneWord);
+// Create high5 function - JS uses callbacks all the time
+const high5 = () => console.log('👋');
+
+// Add event listener 'click' for high5 call back function
+document.body.addEventListener('click', high5);
+
+// High5 5 times with arrays ['Jonas', 'Martha', 'Adam']
+['Jonas', 'Martha', 'Adam'].forEach(high5);
