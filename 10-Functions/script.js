@@ -127,11 +127,11 @@ const lufthasa = {
 
 lufthasa.book(134, 'Tuan Do');
 lufthasa.book(134, 'John Smith');
-console.log(lufthasa.bookings);
+// console.log(lufthasa.bookings);
 
 const eurowings = {
-  ariline: 'Swiss Air Lines',
-  iataCode: 'LX',
+  ariline: 'Eurowings',
+  iataCode: 'EW',
   bookings: [],
 };
 
@@ -142,10 +142,10 @@ const book = lufthasa.book;
 
 // Call method
 book.call(eurowings, 23, 'Sarah Williams');
-console.log(eurowings);
+// console.log(eurowings);
 
 book.call(lufthasa, 239, 'Mary Cooper');
-console.log(lufthasa);
+// console.log(lufthasa);
 
 const swiss = {
   ariline: 'Swiss Air Lines',
@@ -159,6 +159,57 @@ book.call(swiss, 443, 'Mary Cooper');
 // Apply method
 const flightData = [33, 'Mary Cooper'];
 book.apply(swiss, flightData);
-console.log(swiss);
+// console.log(swiss);
 
 book.call(swiss, ...flightData);
+
+////////////////////////////////////////////////
+// The bind Method
+console.clear();
+book.call(eurowings, 23, 'Sarah Williams');
+
+const bookEW = book.bind(eurowings);
+const bookLX = book.bind(swiss);
+const bookLH = book.bind(lufthasa);
+
+bookEW(43, 'Sarah');
+bookLX(45, 'Steave');
+bookLH(48, 'Tom');
+
+const bookEW23 = book.bind(eurowings, 23);
+bookEW23('Sarah');
+bookEW23('Tuan');
+
+// With Event Listeners
+lufthasa.planes = 300;
+lufthasa.buyPlane = function () {
+  console.log(this);
+  this.planes++;
+  console.log(this.planes);
+};
+
+// lufthasa.buyPlane();
+
+// document
+//   .querySelector('.buy')
+//   .addEventListener('click', lufthasa.buyPlane.bind(lufthasa));
+
+// Partial application
+const addTax = (rate, value) => value + value * rate;
+console.log(addTax(0.1, 200));
+
+const addVAT = addTax.bind(null, 0.1);
+// addVAT = value => value + value * 0.23
+
+console.log(addVAT(200));
+console.log(addVAT(100));
+console.log(addVAT(23));
+
+const addTaxRate = rate => value => value + value * rate;
+
+console.log(addTaxRate(0.1)(100));
+console.log(addTaxRate(0.1)(23));
+
+const addVAT2 = addTaxRate(0.1);
+addVAT2(100);
+addVAT2(23);
