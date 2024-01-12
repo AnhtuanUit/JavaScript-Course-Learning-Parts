@@ -618,3 +618,67 @@ console.log(typeof new String('Tuan'));
 console.log(typeof new String('Tuan').slice(1));
 console.log(typeof new String('Tuan').slice(1));
 console.log(typeof new String('Tuan').slice(1)); */
+
+////////////////////////////////////////////////
+// Working With Strings - Part 2
+const airline = 'TAP Air Portual';
+
+console.log(airline.toLocaleLowerCase());
+console.log(airline.toUpperCase());
+
+// Fix capitalization in name
+const passenger = 'tUaN'; // Tuan
+const passengerLowerCase = passenger.toLowerCase();
+const passengerCorrect = passengerLowerCase.replace(
+  passengerLowerCase[0],
+  passengerLowerCase[0].toUpperCase()
+);
+const passengerCorrectV2 =
+  passengerLowerCase[0].toUpperCase() + passengerLowerCase.slice(1);
+console.log(passengerCorrect);
+console.log(passengerCorrectV2);
+
+// Comparing emails
+const email = 'hello@tuan.io';
+const loginEmail = '   Hello@Tuan.Io \n';
+
+const lowerEmail = loginEmail.toLowerCase();
+const trimmedEmail = lowerEmail.trim();
+const normalizedEmail = loginEmail.toLowerCase().trim();
+console.log(normalizedEmail);
+console.log(trimmedEmail);
+console.log(email === normalizedEmail);
+
+// replacing
+const priceGB = '288,97£';
+const priceUS = priceGB.replace('£', '$').replace(',', '.');
+console.log(priceUS);
+
+const announcement =
+  'All passengers come to boarding door 23. Boarding door 23!';
+console.log(announcement.replace('door', 'gate'));
+console.log(announcement.replaceAll('door', 'gate'));
+console.log(announcement.replace(/door/g, 'gate'));
+
+// Booleans
+const plane = 'Airbus A32neo';
+console.log(plane.includes('A320'));
+console.log(plane.includes('Boeing'));
+console.log(plane.startsWith('Airb'));
+
+if (plane.startsWith('Airbus') && plane.endsWith('neo')) {
+  console.log('Part of the NEW Aribus family');
+}
+
+// Pratice exercise
+const checkBaggage = function (items) {
+  const baggage = items.toLowerCase();
+  if (baggage.includes('knife') || baggage.includes('gun')) {
+    console.log('You are NOT allowed on board');
+  } else {
+    console.log('Welcome aboard!');
+  }
+};
+checkBaggage('I have a laptop, some Food and a pocket Knife');
+checkBaggage('Socks and camera');
+checkBaggage('Got some snacks and a gun for protection');
