@@ -615,13 +615,13 @@ function normalizeAuthorName(author) {
 
   return capitalizedStr(firstName) + ' ' + capitalizedStr(lastName);
 }
-console.log(normalizeAuthorName('  JuliE sussMan (Contributor)'));
+// console.log(normalizeAuthorName('  JuliE sussMan (Contributor)'));
 // Expect output: 'Julie Sussman';
 
 // 16.2
 // Take the title of the second book (books[1]) from the books array, and replace the word "Programs" with "Software". Assign the new string to the newBookTitle variable.
 const newBookTitle = books[1].title.replace('Programs', 'Software');
-console.log(newBookTitle);
+// console.log(newBookTitle);
 
 // 16.3
 // Write a function called logBookTheme that takes book's title (string), and logs to the console:

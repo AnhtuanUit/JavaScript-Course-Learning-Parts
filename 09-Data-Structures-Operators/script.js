@@ -682,3 +682,53 @@ const checkBaggage = function (items) {
 checkBaggage('I have a laptop, some Food and a pocket Knife');
 checkBaggage('Socks and camera');
 checkBaggage('Got some snacks and a gun for protection'); */
+
+////////////////////////////////////////////////
+// Working With Strings - Part 3
+
+// Split and join
+console.log('a+very+nice+string'.split('+'));
+console.log('Tuan Do'.split(' '));
+
+const [firstName, lastName] = 'Tuan Do'.split(' ');
+const newName = ['Mr.', firstName, lastName.toUpperCase()].join(' ');
+console.log(newName);
+
+function captalizeName(fullName) {
+  const names = fullName.split(' ');
+  const namesUpper = [];
+  for (const name of names) {
+    namesUpper.push(name.replace(name[0], name[0].toUpperCase()));
+  }
+  console.log(namesUpper.join(' '));
+}
+captalizeName('jessica ann smith davis');
+captalizeName('tuan do');
+
+// Padding
+const message = 'Go to gate 23!';
+console.log(message.padStart(20, '+').padEnd(30, '+'));
+console.log('Tuan'.padStart(20, '+').padEnd(30, '+'));
+
+function maskCreditCard(cardNumber) {
+  const str = cardNumber + '';
+  const last = str.slice(-4);
+  // Add ** to end
+  return last.padStart(str.toString().length, '*');
+}
+
+console.log(maskCreditCard(64637836));
+console.log(maskCreditCard(43378463864647384));
+console.log(maskCreditCard('334859493847755774747'));
+
+// Repeat
+const message2 = 'Bad weather... All Departues. Delayed...';
+
+console.log(message2.repeat(5));
+
+const planesInLine = function (n) {
+  console.log(`There are ${n} planes in line ${'🛫'.repeat(n)}`);
+};
+planesInLine(5);
+planesInLine(3);
+planesInLine(12);
