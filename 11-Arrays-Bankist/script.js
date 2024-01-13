@@ -88,6 +88,19 @@ const displayMovements = movements => {
 
 displayMovements([200, 450, -400, 3000, -650, -130, 70, 1300]);
 
+const createUsernames = accounts => {
+  accounts.forEach(acc => {
+    // Steven Thomas Williams -> username = stw
+    acc.username = acc.owner
+      .toLowerCase()
+      .split(' ')
+      .map(word => word.at(0))
+      .join('');
+  });
+};
+
+createUsernames(accounts);
+
 /////////////////////////////////////////////////
 /////////////////////////////////////////////////
 // LECTURES
@@ -200,7 +213,7 @@ currenciesUnique.forEach((value, _, arr) => {
 
 ////////////////////////////////////////////////
 // map
-const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
+/* const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
 const eurToUsd = 1.1;
 const movementsUSD = movements.map(mov => mov * eurToUsd);
 console.log(movements);
@@ -219,3 +232,4 @@ const movementsDescriptions = movements.map(
     )}€`
 );
 console.log(movementsDescriptions);
+ */
