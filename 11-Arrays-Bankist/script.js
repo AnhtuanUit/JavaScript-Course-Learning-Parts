@@ -33,7 +33,14 @@ const account4 = {
   pin: 4444,
 };
 
-const accounts = [account1, account2, account3, account4];
+const account5 = {
+  owner: 'Tuan Do',
+  movements: [200, 450, -400, 3000, -650, -130, 70, 1300],
+  interestRate: 1.2, // %
+  pin: 1111,
+};
+
+const accounts = [account1, account2, account3, account4, account5];
 
 // Elements
 const labelWelcome = document.querySelector('.welcome');
@@ -60,6 +67,26 @@ const inputTransferAmount = document.querySelector('.form__input--amount');
 const inputLoanAmount = document.querySelector('.form__input--loan-amount');
 const inputCloseUsername = document.querySelector('.form__input--user');
 const inputClosePin = document.querySelector('.form__input--pin');
+
+////////////////////////////////////////////////
+// Functions
+const displayMovements = movements => {
+  containerMovements.innerHTML = '';
+
+  movements.forEach(mov => {
+    const html = `
+    <div class="movements__row">
+      <div class="movements__type movements__type--${
+        mov > 0 ? 'deposit' : 'withdrawal'
+      }">2 deposit</div>
+      <div class="movements__value">${mov}€</div>
+    </div>
+    `;
+    containerMovements.insertAdjacentHTML('afterbegin', html);
+  });
+};
+
+displayMovements([200, 450, -400, 3000, -650, -130, 70, 1300]);
 
 /////////////////////////////////////////////////
 /////////////////////////////////////////////////
@@ -153,7 +180,7 @@ movements.forEach((mov, i, arr) =>
 ////////////////////////////////////////////////
 // forEach With Maps and Sets
 // Map
-const currencies = new Map([
+/* const currencies = new Map([
   ['USD', 'United States dollar'],
   ['EUR', 'Euro'],
   ['GBP', 'Pound sterling'],
@@ -169,3 +196,4 @@ console.log(currenciesUnique);
 currenciesUnique.forEach((value, _, arr) => {
   console.log(`${value}: ${_}`);
 });
+ */
