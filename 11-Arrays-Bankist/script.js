@@ -75,8 +75,6 @@ const currencies = new Map([
 /////////////////////////////////////////////////
 // LECTURES
 
-const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
-
 ////////////////////////////////////////////////
 // Simple Array Methods
 
@@ -119,7 +117,7 @@ console.log(letters.join(' - '));
  */
 ////////////////////////////////////////////////
 // The new 'at' Method
-const arr = [23, 11, 64];
+/* const arr = [23, 11, 64];
 console.log(arr[0]);
 console.log(arr.at(0));
 
@@ -130,3 +128,25 @@ console.log(arr.at(-1));
 
 console.log('tuan'.at(0));
 console.log('tuan'.at(-1));
+ */
+
+////////////////////////////////////////////////
+// Looping Arrays: forEach
+const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
+
+for (const [i, movement] of movements.entries()) {
+  if (movement > 0) {
+    console.log(`Movement ${i + 1}: You deposited ${movement}`);
+  } else {
+    console.log(`Movement ${i + 1}: You withdrew ${Math.abs(movement)}`);
+  }
+}
+
+console.log('---FOREACH---');
+movements.forEach((mov, i, arr) =>
+  console.log(
+    `Movement ${i + 1}: You ${mov > 0 ? 'deposited' : 'withdrew'} ${Math.abs(
+      mov
+    )}`
+  )
+);
