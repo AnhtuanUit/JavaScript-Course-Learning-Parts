@@ -235,7 +235,7 @@ console.log(movementsDescriptions);
  */
 ////////////////////////////////////////////////
 // The filter Method
-const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
+/* const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
 const deposits = movements.filter(mov => mov > 0);
 console.log(movements);
 console.log(deposits);
@@ -249,3 +249,29 @@ console.log(depositsFor);
 
 const withdrawals = movements.filter(mov => mov < 0);
 console.log(withdrawals);
+ */
+////////////////////////////////////////////////
+// The reduce Method
+// accumulator -> SNOWBALL
+const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
+const balance = movements.reduce((acc, mov, i, arr) => {
+  console.log(`Iterate ${i}: ${acc}`);
+  return acc + mov;
+}, 0);
+
+console.log(balance);
+
+let balance2 = 0;
+for (const mov of movements) balance2 += mov;
+console.log(balance2);
+
+// Maximum value
+const max = movements.reduce(
+  (max, mov) => (max > mov ? max : mov),
+  movements[0]
+);
+const min = movements.reduce(
+  (min, mov) => (min < mov ? min : mov),
+  movements[0]
+);
+console.log(min, max);
