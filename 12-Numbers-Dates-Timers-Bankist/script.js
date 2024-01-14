@@ -342,7 +342,7 @@ console.log(+(2.345).toFixed(2)); // 2.35
  */
 ////////////////////////////////////////////////
 // The remainder operator - '%'
-console.log(5 % 2); // 1
+/* console.log(5 % 2); // 1
 console.log(5 / 2); // 5 = 2 * 2 + 1
 
 console.log(8 % 3); // 2
@@ -369,3 +369,23 @@ labelBalance.addEventListener('click', () => {
     if (i % 3 === 0) row.style.backgroundColor = 'blue';
   });
 });
+ */
+
+////////////////////////////////////////////////
+// Numberic Separators
+
+// 287,460,000,000
+const diameter = 287_460_000_000;
+console.log(diameter); // 287460000000
+
+const price = 345_99;
+console.log(price); // 34599
+
+const transferFee1 = 15_00;
+const transferFee2 = 1_500;
+
+const PI = 3.141_5;
+console.log(PI); // 3.1315
+
+console.log(Number('230_000')); // NaN
+console.log(Number.parseInt('230_000')); // 230
