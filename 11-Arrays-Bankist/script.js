@@ -198,6 +198,28 @@ btnTransfer.addEventListener('click', e => {
   }
 });
 
+btnClose.addEventListener('click', e => {
+  e.preventDefault();
+
+  // Confirm credentials
+  if (
+    currentAccount.username === inputCloseUsername.value &&
+    currentAccount.pin === Number(inputClosePin.value)
+  ) {
+    // Delete user from data
+    const index = accounts.findIndex(
+      acc => acc.username === inputCloseUsername.value
+    );
+    accounts.splice(index, 1);
+
+    // Hide UI
+    containerApp.style.opacity = 0;
+    labelWelcome.textContent = 'Log in to get started';
+  }
+
+  inputCloseUsername.value = inputClosePin.value = '';
+});
+
 /////////////////////////////////////////////////
 /////////////////////////////////////////////////
 // LECTURES
