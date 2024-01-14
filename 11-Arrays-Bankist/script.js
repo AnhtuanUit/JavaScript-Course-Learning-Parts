@@ -141,6 +141,13 @@ const updateUI = function (acc) {
 // Event handlers
 let currentAccount;
 
+// (() => {
+//   currentAccount = account5;
+//   containerApp.style.opacity = 1;
+//   // Update UI
+//   updateUI(currentAccount);
+// })();
+
 btnLogin.addEventListener('click', function (e) {
   // Prevent form from submitting
   e.preventDefault();
@@ -160,6 +167,31 @@ btnLogin.addEventListener('click', function (e) {
     // Clear input fields
     inputLoginUsername.value = inputLoginPin.value = '';
     inputLoginPin.blur();
+
+    // Update UI
+    updateUI(currentAccount);
+  }
+});
+
+btnTransfer.addEventListener('click', e => {
+  e.preventDefault();
+  const amount = Number(inputTransferAmount.value);
+
+  const recipientAcc = accounts.find(
+    acc => acc.username === inputTransferTo.value
+  );
+
+  inputTransferTo.value = inputTransferAmount.value = '';
+
+  if (
+    amount >= 0 &&
+    recipientAcc &&
+    currentAccount.balance >= amount &&
+    recipientAcc?.username === currentAccount.username
+  ) {
+    // Doing the transfer
+    currentAccount.movements.push(-amount);
+    recipientAcc.movements.push(amount);
 
     // Update UI
     updateUI(currentAccount);
