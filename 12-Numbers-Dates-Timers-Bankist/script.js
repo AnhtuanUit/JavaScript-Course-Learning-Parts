@@ -375,7 +375,7 @@ labelBalance.addEventListener('click', () => {
 // Numberic Separators
 
 // 287,460,000,000
-const diameter = 287_460_000_000;
+/* const diameter = 287_460_000_000;
 console.log(diameter); // 287460000000
 
 const price = 345_99;
@@ -389,3 +389,39 @@ console.log(PI); // 3.1315
 
 console.log(Number('230_000')); // NaN
 console.log(Number.parseInt('230_000')); // 230
+ */
+
+////////////////////////////////////////////////
+// Working with BigInt
+console.log(2 ** 53 - 1);
+console.log(Number.MAX_SAFE_INTEGER);
+
+console.log(2 ** 53 + 1);
+console.log(2 ** 53 + 2);
+console.log(2 ** 53 + 3);
+console.log(2 ** 53 + 4);
+
+console.log(4349837489237498327489274794827482n);
+console.log(BigInt(43434343));
+
+// Operations
+console.log(1000n + 1000n); // 2000n
+console.log(3754586357863578634586347n * 4374637463n);
+// console.log(Math.sqrt(16n)); // Error: Cannot convert a BigInt value to a number
+
+console.log('---HUGE_PART---');
+const huge = 4587498573985473958n;
+const num = 23;
+console.log(huge * BigInt(num)); // ....n
+
+// Exceptions
+console.log(20n > 15); // true
+console.log(20n === 20); // false
+console.log(typeof 20n); // bigint
+console.log(20n == 20); // true
+
+console.log(huge + 'is REALLYbig!!!'); // '4587498573985473958is REALLYbig!!!'
+
+// Divisions
+console.log(11n / 3n); // 3n
+console.log(10 / 3); // 3.333333
