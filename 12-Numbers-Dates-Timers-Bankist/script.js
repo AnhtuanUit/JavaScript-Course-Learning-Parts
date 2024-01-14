@@ -393,7 +393,7 @@ console.log(Number.parseInt('230_000')); // 230
 
 ////////////////////////////////////////////////
 // Working with BigInt
-console.log(2 ** 53 - 1);
+/* console.log(2 ** 53 - 1);
 console.log(Number.MAX_SAFE_INTEGER);
 
 console.log(2 ** 53 + 1);
@@ -425,3 +425,40 @@ console.log(huge + 'is REALLYbig!!!'); // '4587498573985473958is REALLYbig!!!'
 // Divisions
 console.log(11n / 3n); // 3n
 console.log(10 / 3); // 3.333333
+ */
+////////////////////////////////////////////////
+// Creating Dates
+
+// Create a date
+console.log('---CREATE_A_DATE---');
+const now = new Date();
+console.log(now); // Sun Jan 14 2024 11:58:03 GMT+0700 (Indochina Time)
+
+console.log(new Date('Aug 02 2020 18:05:41')); // Sun Aug 02 2020 18:05:41 GMT+0700 (Indochina Time)
+console.log(new Date('December 24,2015')); // Thu Dec 24 2015 00:00:00 GMT+0700 (Indochina Time)
+
+console.log(new Date(2037, 10, 19, 15, 23, 5)); // XXX Nov 19 2037 15:23:05 GMT+0700 (Indochina Time)
+console.log(new Date(2037, 10, 31)); // XXX Dec 01 2037 00:00:00 GMT+0700 (Indochina Time)
+
+console.log(new Date(0)); // Thu Jan 01 1970 08:00:00 GMT+0800 (Indochina Time)
+console.log(new Date(3 * 24 * 60 * 60 * 1000)); // Sun Jan 04 1970 08:00:00 GMT+0800
+
+// Working with dates
+console.log('---WORKING_WITH_DATES---');
+const furture = new Date(2037, 10, 19, 15, 23); // XXX Nov 19 2037 15:23:00 GMT+0700
+console.log(furture); // XXX Nov 19 2037 15:23:00 GMT+0700
+console.log(furture.getFullYear()); // 2037
+console.log(furture.getMonth()); // 10
+console.log(furture.getDate()); // 19
+console.log(furture.getDay()); // XXX 4
+console.log(furture.getHours()); // 15
+console.log(furture.getMinutes()); // 23
+console.log(furture.getSeconds()); // 0
+console.log(furture.toISOString()); // "2037-11-19T08:23:00.000Z"
+console.log(furture.getTime()); // 2142231780000
+
+console.log(new Date(2142256980000)); // Thu Nov 19 2037 22:23:00 GMT+0700 (Indochina Time)
+console.log(Date.now()); // Mon Nov 19 2040 15:23:00 GMT+0700 (Indochina Time)
+
+furture.setFullYear(2040);
+console.log(furture); // XXX Nov 19 2040 15:23:00 GMT+0700
