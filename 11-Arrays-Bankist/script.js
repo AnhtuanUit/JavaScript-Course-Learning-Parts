@@ -482,4 +482,29 @@ console.log(firstWithdrawal);
 console.log(accounts);
 const account = accounts.find(acc => acc.owner === 'Tuan Do');
 console.log(account);
- */
+*/
+////////////////////////////////////////////////
+// some and every
+const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
+
+// EQUALITY
+console.log(movements.includes(450));
+
+// SOME: CONDITION
+console.log('---CONDITION---');
+console.log(movements.some(mov => mov === 450));
+
+const anyDeposits = movements.some(mov => mov > 0);
+console.log(anyDeposits);
+
+// EVERY
+console.log('---EVERY---');
+console.log(movements.every(mov => mov > 0));
+console.log(account4.movements.every(mov => mov > 0));
+
+// Separate callback
+console.log('---SEPARATE_CALLBACK---');
+const deposit = mov => mov > 0;
+console.log(movements.some(deposit));
+console.log(movements.every(deposit));
+console.log(movements.filter(deposit));
