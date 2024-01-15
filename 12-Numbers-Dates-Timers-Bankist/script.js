@@ -89,11 +89,19 @@ const displayMovements = function (movements, sort = false) {
   movs.forEach(function (mov, i) {
     const type = mov > 0 ? 'deposit' : 'withdrawal';
 
+    let movDate = new Date();
+    const year = movDate.getFullYear();
+    const month = (movDate.getMonth() + 1).toString().padStart(2, 0);
+    const day = movDate.getDay().toString().padStart(2, 0);
+    movDate = `${day}/${month}/${year}`;
+
     const html = `
       <div class="movements__row">
         <div class="movements__type movements__type--${type}">${
       i + 1
     } ${type}</div>
+    
+      <div class="movements__date">${movDate}</div>
         <div class="movements__value">${mov}€</div>
       </div>
     `;
@@ -169,6 +177,16 @@ btnLogin.addEventListener('click', function (e) {
     labelWelcome.textContent = `Welcome back, ${
       currentAccount.owner.split(' ')[0]
     }`;
+
+    let loginDate = new Date();
+    const year = loginDate.getFullYear();
+    const month = `${loginDate.getMonth() + 1}`.padStart(2, 0);
+    const day = `${loginDate.getDay()}`.padStart(2, 0);
+    const hours = `${loginDate.getHours()}`.padStart(2, 0);
+    const minutes = `${loginDate.getMinutes()}`.padStart(2, 0);
+    loginDate = `${day}/${month}/${year}, ${hours}:${minutes}`;
+
+    labelDate.textContent = loginDate;
     containerApp.style.opacity = 100;
 
     // Clear input fields
@@ -430,7 +448,7 @@ console.log(10 / 3); // 3.333333
 // Creating Dates
 
 // Create a date
-console.log('---CREATE_A_DATE---');
+/* console.log('---CREATE_A_DATE---');
 const now = new Date();
 console.log(now); // Sun Jan 14 2024 11:58:03 GMT+0700 (Indochina Time)
 
@@ -462,3 +480,4 @@ console.log(Date.now()); // Mon Nov 19 2040 15:23:00 GMT+0700 (Indochina Time)
 
 furture.setFullYear(2040);
 console.log(furture); // XXX Nov 19 2040 15:23:00 GMT+0700
+ */
