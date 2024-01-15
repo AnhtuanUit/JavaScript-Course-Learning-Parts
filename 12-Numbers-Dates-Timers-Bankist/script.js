@@ -103,6 +103,9 @@ const formatMovementDate = date => {
   // return date;
 };
 
+const formatCur = (value, locale, currency) =>
+  new Intl.NumberFormat(locale, { style: 'currency', currency }).format(value);
+
 const displayMovements = function (movements, sort = false) {
   containerMovements.innerHTML = '';
 
@@ -121,7 +124,11 @@ const displayMovements = function (movements, sort = false) {
     } ${type}</div>
     
       <div class="movements__date">${movDate}</div>
-        <div class="movements__value">${mov}€</div>
+        <div class="movements__value">${formatCur(
+          mov,
+          currentAccount.locale,
+          currentAccount.currency
+        )}</div>
       </div>
     `;
 
@@ -131,19 +138,31 @@ const displayMovements = function (movements, sort = false) {
 
 const calcDisplayBalance = function (acc) {
   acc.balance = acc.movements.reduce((acc, mov) => acc + mov, 0);
-  labelBalance.textContent = `${acc.balance}€`;
+  labelBalance.textContent = `${formatCur(
+    acc.balance,
+    currentAccount.locale,
+    currentAccount.currency
+  )}`;
 };
 
 const calcDisplaySummary = function (acc) {
   const incomes = acc.movements
     .filter(mov => mov > 0)
     .reduce((acc, mov) => acc + mov, 0);
-  labelSumIn.textContent = `${incomes}€`;
+  labelSumIn.textContent = `${formatCur(
+    incomes,
+    currentAccount.locale,
+    currentAccount.currency
+  )}`;
 
   const out = acc.movements
     .filter(mov => mov < 0)
     .reduce((acc, mov) => acc + mov, 0);
-  labelSumOut.textContent = `${Math.abs(out)}€`;
+  labelSumOut.textContent = `${formatCur(
+    Math.abs(out),
+    currentAccount.locale,
+    currentAccount.currency
+  )}`;
 
   const interest = acc.movements
     .filter(mov => mov > 0)
@@ -153,7 +172,11 @@ const calcDisplaySummary = function (acc) {
       return int >= 1;
     })
     .reduce((acc, int) => acc + int, 0);
-  labelSumInterest.textContent = `${interest}€`;
+  labelSumInterest.textContent = `${formatCur(
+    interest,
+    currentAccount.locale,
+    currentAccount.currency
+  )}`;
 };
 
 const createUsernames = function (accs) {
@@ -516,14 +539,36 @@ console.log(furture); // XXX Nov 19 2040 15:23:00 GMT+0700
  */
 ///////////////////////////////////////
 // Operations With Dates
-const future = new Date(2037, 10, 19, 15, 23);
+/* const future = new Date(2037, 10, 19, 15, 23);
 console.log(+future);
 
 const calcDaysPassed = (date1, date2) =>
   Math.abs(date2 - date1) / (1000 * 60 * 60 * 24);
 
 const day1 = calcDaysPassed(new Date(2037, 3, 4), new Date(2037, 3, 5));
-console.log(day1);
+console.log(day1); */
 
 // Add date to app
 // Display date for
+////////////////////////////////////////////////
+// Internationalizing Numbers (Intl)
+const num = 3884764.23;
+
+const options = {
+  style: 'currency',
+  util: 'celsius',
+  currency: 'EUR',
+  useGrouping: false,
+};
+
+console.log('US:    ', new Intl.NumberFormat('en-US', options).format(num));
+console.log(
+  'Germany:    ',
+  new Intl.NumberFormat('de-DE', options).format(num)
+);
+console.log('Syria:    ', new Intl.NumberFormat('ar-SY', options).format(num));
+
+console.log(
+  navigator.language,
+  new Intl.NumberFormat(navigator.language, options).format(num)
+);
