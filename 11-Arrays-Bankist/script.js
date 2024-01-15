@@ -70,10 +70,12 @@ const inputClosePin = document.querySelector('.form__input--pin');
 
 ////////////////////////////////////////////////
 // Functions
-const displayMovements = movements => {
+const displayMovements = (movements, sort = false) => {
   containerMovements.innerHTML = '';
 
-  movements.forEach(mov => {
+  // DESC
+  const movs = sort ? movements.slice().sort((a, b) => a - b) : movements;
+  movs.forEach(mov => {
     const html = `
     <div class="movements__row">
       <div class="movements__type movements__type--${
@@ -218,6 +220,30 @@ btnClose.addEventListener('click', e => {
   }
 
   inputCloseUsername.value = inputClosePin.value = '';
+});
+
+let sorted = false;
+btnSort.addEventListener('click', e => {
+  e.preventDefault();
+  displayMovements(currentAccount.movements, !sorted);
+  sorted = !sorted;
+});
+
+btnLoan.addEventListener('click', e => {
+  e.preventDefault();
+  console.log('CLICK');
+  const amount = Number(inputLoanAmount.value);
+  // Check if any deposit > 10%
+  if (
+    amount > 0 &&
+    currentAccount.movements.some(mov => mov > Number(amount) * 0.1)
+  ) {
+    // Add positive movement to user
+    currentAccount.movements.push(Number(amount));
+    // Update UI
+    updateUI(currentAccount);
+  }
+  inputLoanAmount.value = '';
 });
 
 /////////////////////////////////////////////////
