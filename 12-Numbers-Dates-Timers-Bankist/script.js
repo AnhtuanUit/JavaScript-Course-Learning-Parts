@@ -81,6 +81,26 @@ const inputClosePin = document.querySelector('.form__input--pin');
 /////////////////////////////////////////////////
 // Functions
 
+const formatMovementDate = date => {
+  const calcDaysPassed = (date1, date2) =>
+    Math.round(Math.abs(date2 - date1) / (1000 * 60 * 60 * 24));
+
+  const daysPassed = calcDaysPassed(new Date(), date);
+  console.log(daysPassed);
+  if (daysPassed === 0) {
+    return 'Today';
+  } else if (daysPassed === 1) {
+    return 'Yesterday';
+  } else if (daysPassed <= 7) {
+    return `${daysPassed} days ago`;
+  }
+  const year = date.getFullYear();
+  const month = (date.getMonth() + 1).toString().padStart(2, 0);
+  const day = `${date.getDate()}`.padStart(2, 0);
+  date = `${day}/${month}/${year}`;
+  return date;
+};
+
 const displayMovements = function (movements, sort = false) {
   containerMovements.innerHTML = '';
 
@@ -89,12 +109,9 @@ const displayMovements = function (movements, sort = false) {
   movs.forEach(function (mov, i) {
     const type = mov > 0 ? 'deposit' : 'withdrawal';
 
-    let movDate = new Date();
-    const year = movDate.getFullYear();
-    const month = (movDate.getMonth() + 1).toString().padStart(2, 0);
-    const day = movDate.getDay().toString().padStart(2, 0);
-    movDate = `${day}/${month}/${year}`;
-
+    let movDate = formatMovementDate(
+      new Date(currentAccount.movementsDates[i])
+    );
     const html = `
       <div class="movements__row">
         <div class="movements__type movements__type--${type}">${
@@ -214,7 +231,9 @@ btnTransfer.addEventListener('click', function (e) {
   ) {
     // Doing the transfer
     currentAccount.movements.push(-amount);
+    currentAccount.movementsDates.push(new Date().toISOString());
     receiverAcc.movements.push(amount);
+    receiverAcc.movementsDates.push(new Date().toISOString());
 
     // Update UI
     updateUI(currentAccount);
@@ -229,6 +248,7 @@ btnLoan.addEventListener('click', function (e) {
   if (amount > 0 && currentAccount.movements.some(mov => mov >= amount * 0.1)) {
     // Add movement
     currentAccount.movements.push(amount);
+    currentAccount.movementsDates.push(new Date().toISOString());
 
     // Update UI
     updateUI(currentAccount);
@@ -481,3 +501,16 @@ console.log(Date.now()); // Mon Nov 19 2040 15:23:00 GMT+0700 (Indochina Time)
 furture.setFullYear(2040);
 console.log(furture); // XXX Nov 19 2040 15:23:00 GMT+0700
  */
+///////////////////////////////////////
+// Operations With Dates
+const future = new Date(2037, 10, 19, 15, 23);
+console.log(+future);
+
+const calcDaysPassed = (date1, date2) =>
+  Math.abs(date2 - date1) / (1000 * 60 * 60 * 24);
+
+const day1 = calcDaysPassed(new Date(2037, 3, 4), new Date(2037, 3, 5));
+console.log(day1);
+
+// Add date to app
+// Display date for
