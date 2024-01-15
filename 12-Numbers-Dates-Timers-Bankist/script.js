@@ -94,11 +94,13 @@ const formatMovementDate = date => {
   } else if (daysPassed <= 7) {
     return `${daysPassed} days ago`;
   }
-  const year = date.getFullYear();
-  const month = (date.getMonth() + 1).toString().padStart(2, 0);
-  const day = `${date.getDate()}`.padStart(2, 0);
-  date = `${day}/${month}/${year}`;
-  return date;
+
+  return new Intl.DateTimeFormat(currentAccount.locale).format(date);
+  // const year = date.getFullYear();
+  // const month = (date.getMonth() + 1).toString().padStart(2, 0);
+  // const day = `${date.getDate()}`.padStart(2, 0);
+  // date = `${day}/${month}/${year}`;
+  // return date;
 };
 
 const displayMovements = function (movements, sort = false) {
@@ -195,15 +197,26 @@ btnLogin.addEventListener('click', function (e) {
       currentAccount.owner.split(' ')[0]
     }`;
 
-    let loginDate = new Date();
-    const year = loginDate.getFullYear();
-    const month = `${loginDate.getMonth() + 1}`.padStart(2, 0);
-    const day = `${loginDate.getDay()}`.padStart(2, 0);
-    const hours = `${loginDate.getHours()}`.padStart(2, 0);
-    const minutes = `${loginDate.getMinutes()}`.padStart(2, 0);
-    loginDate = `${day}/${month}/${year}, ${hours}:${minutes}`;
+    const now = new Date();
+    // const year = now.getFullYear();
+    // const month = `${now.getMonth() + 1}`.padStart(2, 0);
+    // const day = `${now.getDay()}`.padStart(2, 0);
+    // const hours = `${now.getHours()}`.padStart(2, 0);
+    // const minutes = `${now.getMinutes()}`.padStart(2, 0);
+    // const welcomeDate = `${day}/${month}/${year}, ${hours}:${minutes}`;
 
-    labelDate.textContent = loginDate;
+    const options = {
+      year: 'numeric',
+      month: 'numeric',
+      day: 'numeric',
+      hour: 'numeric',
+      minute: 'numeric',
+    };
+
+    labelDate.textContent = new Intl.DateTimeFormat(
+      currentAccount.locale,
+      options
+    ).format(now);
     containerApp.style.opacity = 100;
 
     // Clear input fields
