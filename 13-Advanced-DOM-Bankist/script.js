@@ -128,7 +128,7 @@ logo.classList.contains('c'); // not includes
 // Button scrolling
 const btnScrollTo = document.querySelector('.btn--scroll-to');
 const section1 = document.getElementById('section--1');
-btnScrollTo.addEventListener('click', e => {
+btnScrollTo.addEventListener('click', function (e) {
   e.preventDefault();
   const s1coords = section1.getBoundingClientRect();
   console.log(s1coords);
@@ -161,17 +161,49 @@ btnScrollTo.addEventListener('click', e => {
 // Types of Events and Event Handlers
 const h1 = document.querySelector('h1');
 
-const arlertH1 = e => {
+const arlertH1 = function (e) {
   alert('addEventListener: Great! You are reading the heading :D');
 };
 
-// h1.onmouseenter = e => {
+// h1.onmouseenter = function(e){
 //   alert('onmouseenter: Great! You are reading the heading :D');
 // };
 
-h1.addEventListener('mouseenter', arlertH1);
+// h1.addEventListener('mouseenter', arlertH1);
 
 setTimeout(() => {
   h1.removeEventListener('mouseenter', arlertH1);
   console.log('remove h1');
 }, 3000);
+
+////////////////////////////////////////////////
+// Event Propagation in Pratice
+
+const randomInt = (min, max) =>
+  Math.floor(Math.random() * (max - min + 1) + min);
+
+const randomColor = () =>
+  `rgb(${randomInt(0, 255)}, ${randomInt(0, 255)}, ${randomInt(0, 255)})`;
+
+// console.log(randomColor());
+
+document.querySelector('.nav__link').addEventListener('click', function (e) {
+  console.log('LINK');
+  console.log(this.style);
+  this.style.backgroundColor = randomColor();
+  console.log(('LINK', e.target, e.currentTarget));
+  console.log(e.currentTarget === this);
+
+  // Stop propagation
+  // e.stopPropagation();
+});
+
+document.querySelector('.nav__links').addEventListener('click', function (e) {
+  this.style.backgroundColor = randomColor();
+  console.log('CONTAINER', e.target, e.currentTarget);
+});
+
+document.querySelector('.nav').addEventListener('click', function (e) {
+  this.style.backgroundColor = randomColor();
+  console.log('NAV', e.target, e.currentTarget);
+});
