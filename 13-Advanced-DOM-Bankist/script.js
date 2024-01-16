@@ -38,7 +38,7 @@ document.addEventListener('keydown', function (e) {
 // Selecting, Creating, and Deleting Elements
 
 // Selecting elements
-console.log(document.documentElement);
+/* console.log(document.documentElement);
 console.log(document.head);
 console.log(document.body);
 
@@ -122,11 +122,11 @@ logo.classList.contains('c'); // not includes
 
 // Don't use
 // logo.className = 'Tuan2';
-
+ */
 ////////////////////////////////////////////////
 // 10.Implementing Smooth Scrolling
 // Button scrolling
-const btnScrollTo = document.querySelector('.btn--scroll-to');
+/* const btnScrollTo = document.querySelector('.btn--scroll-to');
 const section1 = document.getElementById('section--1');
 btnScrollTo.addEventListener('click', function (e) {
   e.preventDefault();
@@ -175,11 +175,11 @@ setTimeout(() => {
   h1.removeEventListener('mouseenter', arlertH1);
   console.log('remove h1');
 }, 3000);
-
+ */
 ////////////////////////////////////////////////
 // Event Propagation in Pratice
 
-const randomInt = (min, max) =>
+/* const randomInt = (min, max) =>
   Math.floor(Math.random() * (max - min + 1) + min);
 
 const randomColor = () =>
@@ -206,4 +206,28 @@ document.querySelector('.nav__links').addEventListener('click', function (e) {
 document.querySelector('.nav').addEventListener('click', function (e) {
   this.style.backgroundColor = randomColor();
   console.log('NAV', e.target, e.currentTarget);
+}); */
+////////////////////////////////////////////////
+// Page navigation
+
+document.querySelectorAll('.nav__link').forEach(function (el) {
+  el.addEventListener('click', function (e) {
+    e.preventDefault();
+    const id = this.getAttribute('href');
+    console.log(id);
+    document.querySelector(id).scrollIntoView({ behavior: 'smooth' });
+  });
+});
+
+// 1. Add event listener to common parent element
+// 2. Determine what element originated the event
+document.querySelector('.nav__links').addEventListener('click', function (e) {
+  e.preventDefault();
+
+  // Match strategy
+  if (e.target.classList.includes('nav__link')) {
+    const id = e.target.getAttribute('href');
+    console.log(id);
+    document.querySelector(id).scrollIntoView({ behavior: 'smooth' });
+  }
 });
