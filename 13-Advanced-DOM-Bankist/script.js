@@ -164,6 +164,48 @@ const imgObserver = new IntersectionObserver(imgLazyLoad, {
 targetImages.forEach(targetImg => imgObserver.observe(targetImg));
 
 ////////////////////////////////////////////////
+// Slider
+// 1) Change by images
+
+// 2) Change style look it small
+const slides = document.querySelectorAll('.slide');
+const sliderBtnRight = document.querySelector('.slider__btn--right');
+const sliderBtnLeft = document.querySelector('.slider__btn--left');
+
+document.querySelector('.slider');
+
+let currSlide = 0;
+const maxSlide = slides.length;
+
+const moveToSlide = num => {
+  slides.forEach(function (slide, i) {
+    slide.style.transform = `translateX(${100 * (i - num)}%)`;
+  });
+};
+moveToSlide(0);
+// Next slide
+const nextSlide = function () {
+  if (currSlide === maxSlide - 1) {
+    currSlide = 0;
+  } else {
+    currSlide++;
+  }
+  moveToSlide(currSlide);
+};
+// Previous slide
+const prevSlide = function () {
+  if (currSlide === 0) {
+    currSlide = maxSlide - 1;
+  } else {
+    currSlide--;
+  }
+  moveToSlide(currSlide);
+};
+// Event handlers
+sliderBtnRight.addEventListener('click', nextSlide);
+sliderBtnLeft.addEventListener('click', prevSlide);
+
+////////////////////////////////////////////////
 ////////////////////////////////////////////////
 ////////////////////////////////////////////////
 // LECTURE
