@@ -86,7 +86,7 @@ const formatMovementDate = date => {
     Math.round(Math.abs(date2 - date1) / (1000 * 60 * 60 * 24));
 
   const daysPassed = calcDaysPassed(new Date(), date);
-  console.log(daysPassed);
+  // console.log(daysPassed);
   if (daysPassed === 0) {
     return 'Today';
   } else if (daysPassed === 1) {
@@ -201,9 +201,34 @@ const updateUI = function (acc) {
   calcDisplaySummary(acc);
 };
 
+const startLogoutTimer = () => {
+  let time = 60 * 5; // seconds
+  const tick = () => {
+    // Generate time
+    const minutes = `${Math.floor(time / 60)}`.padStart(2, 0);
+    const seconds = `${time % 60}`.padStart(2, 0);
+    // Display to UI
+    labelTimer.textContent = `${minutes}:${seconds}`;
+
+    // When time = 0, stop interval
+    if (time === 0) {
+      clearInterval(timer);
+      labelWelcome.textContent = 'Log in to get started';
+      containerApp.style.opacity = 0;
+    }
+
+    // In each second, time--
+    time--;
+  };
+  // Start an interval each second
+  tick();
+  const timer = setInterval(tick, 1000);
+  return timer;
+};
+
 ///////////////////////////////////////
 // Event handlers
-let currentAccount;
+let currentAccount, timer;
 
 btnLogin.addEventListener('click', function (e) {
   // Prevent form from submitting
@@ -246,6 +271,10 @@ btnLogin.addEventListener('click', function (e) {
     inputLoginUsername.value = inputLoginPin.value = '';
     inputLoginPin.blur();
 
+    // Reset timer
+    if (timer) clearInterval(timer);
+    timer = startLogoutTimer();
+
     // Update UI
     updateUI(currentAccount);
   }
@@ -271,6 +300,10 @@ btnTransfer.addEventListener('click', function (e) {
     receiverAcc.movements.push(amount);
     receiverAcc.movementsDates.push(new Date().toISOString());
 
+    // Restart timer
+    if (timer) clearInterval(timer);
+    timer = startLogoutTimer();
+
     // Update UI
     updateUI(currentAccount);
   }
@@ -292,6 +325,9 @@ btnLoan.addEventListener('click', function (e) {
     }, 2500);
   }
   inputLoanAmount.value = '';
+  // Restart timer
+  if (timer) clearInterval(timer);
+  timer = startLogoutTimer();
 });
 
 btnClose.addEventListener('click', function (e) {
@@ -579,7 +615,7 @@ console.log(
 // Timers: setTimeout and setInterval
 
 // setTimeout
-const ingredients = ['olives', 'spinach'];
+/* const ingredients = ['olives', 'spinach'];
 const pizzaTimer = setTimeout(
   (ing1, ing2) => console.log(`Here is your pizza with ${ing1} and ${ing2}`),
   3000,
@@ -595,3 +631,4 @@ setInterval(() => {
   const now = new Date();
   console.log(now);
 }, 1000);
+ */
