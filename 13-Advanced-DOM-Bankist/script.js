@@ -156,3 +156,22 @@ btnScrollTo.addEventListener('click', e => {
   // });
   section1.scrollIntoView({ behavior: 'smooth' });
 });
+
+////////////////////////////////////////////////
+// Types of Events and Event Handlers
+const h1 = document.querySelector('h1');
+
+const arlertH1 = e => {
+  alert('addEventListener: Great! You are reading the heading :D');
+};
+
+// h1.onmouseenter = e => {
+//   alert('onmouseenter: Great! You are reading the heading :D');
+// };
+
+h1.addEventListener('mouseenter', arlertH1);
+
+setTimeout(() => {
+  h1.removeEventListener('mouseenter', arlertH1);
+  console.log('remove h1');
+}, 3000);
