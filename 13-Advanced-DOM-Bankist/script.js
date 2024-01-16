@@ -59,6 +59,27 @@ tabsContainer.addEventListener('click', function (e) {
 });
 
 ////////////////////////////////////////////////
+// Meny fade animation
+
+const nav = document.querySelector('.nav');
+
+const handlerHover = function (e) {
+  if (e.target.classList.contains('nav__link')) {
+    const link = e.target;
+    const siblings = link.closest('.nav').querySelectorAll('.nav__link');
+    const logo = link.closest('.nav').querySelector('img');
+
+    siblings.forEach(el => {
+      if (el !== link) el.style.opacity = this;
+    });
+    logo.style.opacity = this;
+  }
+};
+
+nav.addEventListener('mouseover', handlerHover.bind(0.5));
+nav.addEventListener('mouseout', handlerHover.bind(1));
+
+////////////////////////////////////////////////
 ////////////////////////////////////////////////
 ////////////////////////////////////////////////
 // LECTURE
@@ -262,7 +283,7 @@ document.querySelector('.nav__links').addEventListener('click', function (e) {
 
 ////////////////////////////////////////////////
 // DOME Traversing
-const h1 = document.querySelector('h1');
+/* const h1 = document.querySelector('h1');
 
 // Going downwards: child
 console.log(h1.querySelectorAll('.highlight'));
@@ -294,4 +315,4 @@ console.log(h1.parentElement.children);
   if (el !== h1) {
     el.style.transform = 'scale(0.5)';
   }
-});
+}); */
