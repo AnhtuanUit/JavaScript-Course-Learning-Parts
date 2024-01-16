@@ -80,6 +80,20 @@ nav.addEventListener('mouseover', handlerHover.bind(0.5));
 nav.addEventListener('mouseout', handlerHover.bind(1));
 
 ////////////////////////////////////////////////
+// Sticky navigation
+// const section1 = document.getElementById('section--1');
+// const initialCoords = section1.getBoundingClientRect();
+// const section1Top = initialCoords.top + this.window.scrollY;
+
+// window.addEventListener('scroll', function (e) {
+//   if (this.window.scrollY > section1Top) {
+//     nav.classList.add('sticky');
+//   } else {
+//     nav.classList.remove('sticky');
+//   }
+// });
+
+////////////////////////////////////////////////
 // Sticky navigation: Intersection Observer API
 const header = document.querySelector('.header');
 const navHeight = nav.getBoundingClientRect().height;
