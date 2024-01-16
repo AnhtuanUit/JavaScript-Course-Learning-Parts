@@ -168,19 +168,42 @@ targetImages.forEach(targetImg => imgObserver.observe(targetImg));
 // 1) Change by images
 
 // 2) Change style look it small
+const slider = document.querySelector('.slider');
 const slides = document.querySelectorAll('.slide');
 const sliderBtnRight = document.querySelector('.slider__btn--right');
 const sliderBtnLeft = document.querySelector('.slider__btn--left');
+const dotContainer = document.querySelector('.dots');
 
 document.querySelector('.slider');
 
 let currSlide = 0;
 const maxSlide = slides.length;
 
+const showSlideDots = () => {
+  slides.forEach((_, i) => {
+    dotContainer.insertAdjacentHTML(
+      'beforeend',
+      `<button class="dots__dot" data-slide="${i}">`
+    );
+  });
+};
+showSlideDots();
+
+const activateDot = slide => {
+  document.querySelectorAll('.dots__dot').forEach(el => {
+    el.classList.remove('dots__dot--active');
+  });
+
+  document
+    .querySelector(`.dots__dot[data-slide="${slide}"]`)
+    .classList.add('dots__dot--active');
+};
+
 const moveToSlide = num => {
   slides.forEach(function (slide, i) {
     slide.style.transform = `translateX(${100 * (i - num)}%)`;
   });
+  activateDot(num);
 };
 moveToSlide(0);
 // Next slide
@@ -201,9 +224,27 @@ const prevSlide = function () {
   }
   moveToSlide(currSlide);
 };
+
 // Event handlers
 sliderBtnRight.addEventListener('click', nextSlide);
 sliderBtnLeft.addEventListener('click', prevSlide);
+
+document.querySelector('.dots').addEventListener('click', function (e) {
+  if (e.target.classList.contains('dots__dot')) {
+    currSlide = e.target.dataset.slide;
+    moveToSlide(currSlide);
+  }
+});
+
+document.addEventListener('keydown', function (e) {
+  console.log(e.key);
+  if (e.key === 'ArrowRight') {
+    nextSlide();
+  }
+  if (e.key === 'ArrowLeft') {
+    prevSlide();
+  }
+});
 
 ////////////////////////////////////////////////
 ////////////////////////////////////////////////
