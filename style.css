@@ -1,10 +1,11 @@
 body {
-  height: 100vh;
+  /* height: 100vh; */
   display: flex;
   /* align-items: center; */
   flex-direction: column;
   background: linear-gradient(to top left, #28b487, #7dd56f);
   gap: 24px;
+  padding-bottom: 64px;
 }
 
 h1 {
