@@ -361,22 +361,22 @@ logo.classList.contains('c'); // not includes
 ////////////////////////////////////////////////
 // 10.Implementing Smooth Scrolling
 // Button scrolling
-/* const btnScrollTo = document.querySelector('.btn--scroll-to');
+const btnScrollTo = document.querySelector('.btn--scroll-to');
 const section1 = document.getElementById('section--1');
 btnScrollTo.addEventListener('click', function (e) {
   e.preventDefault();
-  const s1coords = section1.getBoundingClientRect();
-  console.log(s1coords);
+  // const s1coords = section1.getBoundingClientRect();
+  // console.log(s1coords);
 
-  console.log(e.target.getBoundingClientRect);
+  // console.log(e.target.getBoundingClientRect);
 
-  console.log('Current scroll (X/Y)', window.pageXOffset, window.pageYOffset);
+  // console.log('Current scroll (X/Y)', window.pageXOffset, window.pageYOffset);
 
-  console.log(
-    'height/width viewport',
-    document.documentElement.clientHeight,
-    document.documentElement.clientWidth
-  );
+  // console.log(
+  //   'height/width viewport',
+  //   document.documentElement.clientHeight,
+  //   document.documentElement.clientWidth
+  // );
 
   // Scrolling
   // window.scrollTo(
@@ -394,7 +394,7 @@ btnScrollTo.addEventListener('click', function (e) {
 
 ////////////////////////////////////////////////
 // Types of Events and Event Handlers
-const h1 = document.querySelector('h1');
+/* const h1 = document.querySelector('h1');
 
 const arlertH1 = function (e) {
   alert('addEventListener: Great! You are reading the heading :D');
@@ -409,8 +409,8 @@ const arlertH1 = function (e) {
 setTimeout(() => {
   h1.removeEventListener('mouseenter', arlertH1);
   console.log('remove h1');
-}, 3000);
- */
+}, 3000); */
+
 ////////////////////////////////////////////////
 // Event Propagation in Pratice
 
