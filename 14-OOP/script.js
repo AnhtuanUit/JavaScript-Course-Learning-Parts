@@ -32,3 +32,23 @@ Person.hey = function () {
   console.log(this);
 };
 Person.hey();
+////////////////////////////////////////////////
+// Prototypes
+console.log(Person.prototype);
+
+Person.prototype.calcAge = function () {
+  console.log(2037 - this.birthYear);
+};
+
+tuan.calcAge();
+matilda.calcAge();
+
+console.log(tuan.__proto__);
+console.log(tuan.__proto__ === Person.prototype);
+
+// prototypeOfLinkedObjects
+Person.prototype.species = 'Homo Sapiens';
+console.log(tuan.species, matilda.species);
+
+console.log(tuan.hasOwnProperty('firstName'));
+console.log(tuan.hasOwnProperty('species'));
