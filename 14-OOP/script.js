@@ -130,8 +130,8 @@ mercedes.brake();
 // ES6 Classes
 console.log('---ES6_CLASSES---');
 class PersonCl {
-  constructor(firstName, birthYear) {
-    this.firstName = firstName;
+  constructor(fullName, birthYear) {
+    this.fullName = fullName;
     this.birthYear = birthYear;
   }
 
@@ -141,7 +141,20 @@ class PersonCl {
     console.log(2037 - this.birthYear);
   }
   greet() {
-    console.log(`Hey ${this.firstName}`);
+    console.log(`Hey ${this.fullName}`);
+  }
+
+  get age() {
+    return 2037 - this.birthYear;
+  }
+
+  //  Set a property that already exists
+  set fullName(name) {
+    if (name.includes(' ')) this._fullName = name;
+    else alert(`${name} is not a full name!`);
+  }
+  get fullName() {
+    return this._fullName;
   }
 }
 
@@ -152,7 +165,7 @@ jessica.calcAge();
 console.log(jessica.__proto__ === PersonCl.prototype);
 
 // PersonCl.prototype.greet = function () {
-//   console.log(`Hey ${this.firstName}`);
+//   console.log(`Hey ${this.fullName}`);
 // };
 
 jessica.greet();
@@ -160,3 +173,25 @@ jessica.greet();
 // 1. Classes are NOT hoisted
 // 2. Classes are first-class citizens
 // 3. Classes are executed in strict mode
+
+////////////////////////////////////////////////
+// Setters and Getters
+console.log('---SETTERS_GETTERS---');
+const account = {
+  owner: 'Tuan',
+  movements: [200, 530, 120, 300],
+  get lastest() {
+    return this.movements.slice(-1).pop();
+  },
+  set lastest(mov) {
+    this.movements.push(mov);
+  },
+};
+console.log(account.lastest);
+
+account.lastest = 50;
+console.log(account.movements);
+
+// Setter and Getters in Class: PersonCl
+const walter = new PersonCl('Walter White', 1965);
+console.log(walter.age);
