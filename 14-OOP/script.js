@@ -52,3 +52,31 @@ console.log(tuan.species, matilda.species);
 
 console.log(tuan.hasOwnProperty('firstName'));
 console.log(tuan.hasOwnProperty('species'));
+
+////////////////////////////////////////////////
+// Prototypal Ingeritance on Built-in Objects
+console.log(tuan.__proto__);
+// Object.prototype (top of prototype chain)
+// console.log(Object.prototype);
+
+console.log(tuan.__proto__.__proto__);
+console.log(tuan.__proto__.__proto__ === Object.prototype); // true
+console.log(tuan.__proto__.__proto__.__proto__); // null
+
+console.log(Person.prototype.constructor);
+
+const arr = [3, 6, 6, 5, 6, 9, 9]; //new Array = []
+console.log(arr.__proto__);
+console.log(arr.__proto__ === Array.prototype);
+
+console.log(arr.__proto__.__proto__ === Object.prototype); // Object.prototype (top of prototype chain)
+
+Array.prototype.unique = function () {
+  return [...new Set(this)];
+};
+
+console.log(arr.unique());
+
+const h1 = document.querySelector('h1');
+console.dir(h1);
+console.dir(x => x + 1);
