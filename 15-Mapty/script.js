@@ -21,6 +21,19 @@ if (navigator.geolocation) {
       console.log(
         `https://www.google.com/maps/search/${latitude},+${longitude}?entry=tts`
       );
+      const coords = [latitude, longitude];
+      const map = L.map('map').setView(coords, 13);
+
+      L.tileLayer('https://tile.openstreetmap.fr/hot/{z}/{x}/{y}.png', {
+        maxZoom: 19,
+        attribution:
+          '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>',
+      }).addTo(map);
+
+      L.marker(coords)
+        .addTo(map)
+        .bindPopup('A pretty CSS3 popup. <br/> Easyly customizable.')
+        .openPopup();
     },
     function () {
       alert('Could not get your position');
