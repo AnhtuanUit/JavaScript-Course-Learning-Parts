@@ -133,8 +133,14 @@ const sectionObserver = new IntersectionObserver(revealSection, {
 });
 
 allSections.forEach(function (section) {
-  sectionObserver.observe(section);
-  section.classList.add('section--hidden');
+  const rect = section.getBoundingClientRect();
+  // Check if the section is in the viewport
+  if (rect.top <= window.innerHeight && rect.bottom >= 0) {
+  } else {
+    sectionObserver.observe(section);
+    // Only hide
+    section.classList.add('section--hidden');
+  }
 });
 
 // Lazy loading images
@@ -205,7 +211,20 @@ const moveToSlide = num => {
   });
   activateDot(num);
 };
-moveToSlide(0);
+const initialSlide = () => {
+  slides.forEach(function (slide, i) {
+    // Disable transition for initial setup
+    slide.style.transition = 'none';
+  });
+  moveToSlide(0);
+  setTimeout(() => {
+    // Restore transition for subsequent animations
+    slides.forEach(function (slide, i) {
+      slide.style.transition = 'transform 1s';
+    });
+  }, 1000);
+};
+initialSlide();
 // Next slide
 const nextSlide = function () {
   if (currSlide === maxSlide - 1) {
