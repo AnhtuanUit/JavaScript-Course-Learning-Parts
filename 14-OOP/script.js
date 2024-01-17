@@ -1,7 +1,7 @@
 'use strict';
 ////////////////////////////////////////////////
 // Constructor Functions and the new Operator
-const Person = function (firstName, birthYear) {
+/* const Person = function (firstName, birthYear) {
   // Instant properties
   this.firstName = firstName;
   this.birthYear = birthYear;
@@ -79,7 +79,7 @@ console.log(arr.unique());
 
 const h1 = document.querySelector('h1');
 console.dir(h1);
-console.dir(x => x + 1);
+console.dir(x => x + 1); */
 
 ////////////////////////////////////////////////
 // Coding Challenge #1
@@ -95,7 +95,7 @@ DATA CAR 2: 'Mercedes' going at 95 km/h
 GOOD LUCK 😀
 */
 // 1.
-const CarCl = function (make, speed) {
+/* const CarCl = function (make, speed) {
   this.speed = speed;
   this.make = make;
 };
@@ -168,7 +168,7 @@ console.log(jessica.__proto__ === PersonCl.prototype);
 //   console.log(`Hey ${this.fullName}`);
 // };
 
-jessica.greet();
+jessica.greet(); */
 
 // 1. Classes are NOT hoisted
 // 2. Classes are first-class citizens
@@ -176,7 +176,7 @@ jessica.greet();
 
 ////////////////////////////////////////////////
 // Setters and Getters
-console.log('---SETTERS_GETTERS---');
+/* console.log('---SETTERS_GETTERS---');
 const account = {
   owner: 'Tuan',
   movements: [200, 530, 120, 300],
@@ -194,12 +194,12 @@ console.log(account.movements);
 
 // Setter and Getters in Class: PersonCl
 const walter = new PersonCl('Walter White', 1965);
-console.log(walter.age);
+console.log(walter.age); */
 
 ////////////////////////////////////////////////
 // Object.create
 
-const PersonProto = {
+/* const PersonProto = {
   calcAge() {
     console.log(2037 - this.birthYear);
   },
@@ -217,7 +217,7 @@ console.log(steven.__proto__ === PersonProto);
 
 const sarah = Object.create(PersonProto);
 sarah.init('Sarah', 2007);
-sarah.calcAge();
+sarah.calcAge(); */
 
 ////////////////////////////////////////////////
 // Coding Challenge #2
@@ -239,7 +239,7 @@ GOOD LUCK 😀
 // };
 
 // 1.
-class CarES6 {
+/* class CarES6 {
   constructor(make, speed) {
     this.speed = speed;
     this.make = make;
@@ -276,3 +276,36 @@ ford.accelerate();
 ford.brake();
 ford.speedUS = 100;
 console.log(ford);
+ */
+////////////////////////////////////////////////
+// Inheritance Between "Classes": Constructor Functions
+// Create Student Class by Constructor Function
+
+// 1) Create Person
+const Person = function (firstName, birthYear) {
+  this.firstName = firstName;
+  this.birthYear = birthYear;
+};
+
+Person.prototype.calcAge = function () {
+  console.log(2037 - this.birthYear);
+};
+// 2) Create Student, Constructor and Methods
+const Student = function (firstName, birthYear, course) {
+  // this.firstName = firstName;
+  // this.birthYear = birthYear;
+  Person.call(this, firstName, birthYear);
+  this.course = course;
+};
+// 3) Link __proto__ Student to Person.prototype
+Student.prototype = Object.create(Person.prototype);
+Student.prototype.introduce = function () {
+  console.log(`My name is ${this.firstName} and I study ${this.course}`);
+};
+
+// 4) Init Student Constructor by Call Person Constructor
+const mike = new Student('Mike', 2020, 'Computer Science');
+console.dir(mike);
+// 5) Create student by Student Class and use it
+mike.introduce();
+mike.calcAge();
