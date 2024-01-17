@@ -511,7 +511,7 @@ console.log(acc1.pin);
  */
 
 ////////////////////////////////////////////////
-class Account {
+/* class Account {
   constructor(owner, currency, pin) {
     this.owner = owner;
     this.currency = currency;
@@ -558,3 +558,72 @@ acc1.requestLoan(1000);
 
 console.log(acc1);
 console.log(acc1.pin);
+ */
+
+////////////////////////////////////////////////
+// Encapsulation: Protected Properties and Methods
+// Encapsulation: Private Class Fields and Methods
+
+// 1) Public fields
+// 2) Private fields
+// 3) Public methods
+// 4) Private methods
+// (there is also the static version)
+class Account {
+  // 1) Public field (instances)
+  locale = navigator.language;
+
+  // 2) Private fields (instances)
+  #movements = [];
+  #pin;
+  constructor(owner, currency, pin) {
+    this.owner = owner;
+    this.currency = currency;
+    // Protected property
+    this.#pin = pin;
+    this.#movements = [];
+    console.log(`Thank for openning an account, ${this.owner}`);
+  }
+
+  // 3) Public methods
+  getMovements() {
+    return this.#movements;
+  }
+  deposit(val) {
+    this.#movements.push(val);
+  }
+
+  withdraw(val) {
+    this.deposit(-val);
+  }
+
+  requestLoan(val) {
+    // if (this.#approveLoan(val)) {
+    if (this._approveLoan(val)) {
+      this.deposit(val);
+      console.log('Loan approved');
+    }
+  }
+
+  // 4) Privated methods
+  // #approveLoan(val) {
+  _approveLoan(val) {
+    return true;
+  }
+}
+
+const acc1 = new Account('Tuan', 'VND', 1111);
+
+// acc1.movements.push(100);
+// acc1.movements.push(-400);
+console.log(acc1.getMovements());
+acc1.deposit(100);
+acc1.withdraw(400);
+acc1.requestLoan(1000);
+// acc1.approveLoan(1000);
+
+console.log(acc1);
+console.log(acc1.pin);
+// console.log(acc1.#pin);
+// console.log(acc1.#movements);
+// console.log(acc1.#approveLoan);
