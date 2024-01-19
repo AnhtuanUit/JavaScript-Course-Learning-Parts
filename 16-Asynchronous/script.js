@@ -384,10 +384,35 @@ const whereAmI = async function () {
     if (!countryData?.[0]) throw new Error('Problem getting country');
     console.log(countryData);
     renderCountry(countryData[0]);
+    return `You are in ${dataGeo.city}, ${dataGeo.country}`;
   } catch (err) {
     console.log(`💥`, err);
     renderError(`💥 ${err.message}`);
+    throw err;
   }
 };
 
-whereAmI();
+// whereAmI();
+////////////////////////////////////////////////
+// Returning Values from Async Functions
+// console.log('Step 1');
+// whereAmI()
+//   .then(data => console.log('Step 2', data))
+//   .catch(err => console.log(`Step 2 💥 ${err.message}`))
+//   .finally(() => {
+//     console.log('Step 3');
+//   });
+
+// console.log('Step 4');
+
+// IIFE
+(async () => {
+  console.log('Step 1');
+  try {
+    const data = await whereAmI();
+    console.log('Step 2', data);
+  } catch (err) {
+    console.log(`Step 2 💥 ${err.message}`);
+  }
+  console.log('Step 4');
+})();
