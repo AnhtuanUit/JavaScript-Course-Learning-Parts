@@ -144,13 +144,15 @@ const getCountryData = function (country) {
   getJSON(`https://restcountries.com/v3.1/name/${country}`, 'Country not found')
     .then(data => {
       renderCountry(data[0]);
-      const [neighbour] = data?.[0].borders;
+      const [neighbour, neighbour2, neighbour3] = data?.[0].borders;
 
       if (!neighbour) throw new Error('Neighbour does not exist');
 
       // Country 2
       return getJSON(
-        `https://restcountries.com/v3.1/name/${neighbour}`,
+        `https://restcountries.com/v3.1/name/${
+          neighbour3 || neighbour2 || neighbour
+        }`,
         'Country not found'
       );
     })
@@ -165,29 +167,29 @@ const getCountryData = function (country) {
     });
 };
 
-btn.addEventListener('click', function () {
-  // TEST COORDINATES 1: 52.508, 13.381 (Latitude, Longitude)
-  // TEST COORDINATES 2: 19.037, 72.873
-  // TEST COORDINATES 2: -33.933, 18.474
-  const coords1 = [52.508, 13.381];
-  const coords2 = [19.037, 72.873];
-  const coords3 = [-33.933, 18.474];
+// btn.addEventListener('click', function () {
+//   // TEST COORDINATES 1: 52.508, 13.381 (Latitude, Longitude)
+//   // TEST COORDINATES 2: 19.037, 72.873
+//   // TEST COORDINATES 2: -33.933, 18.474
+//   const coords1 = [52.508, 13.381];
+//   const coords2 = [19.037, 72.873];
+//   const coords3 = [-33.933, 18.474];
 
-  whereAmI(...coords1).then(country => {
-    // getCountryData('portugal');
-    return country && getCountryData(country);
-  });
+//   whereAmI(...coords1).then(country => {
+//     // getCountryData('portugal');
+//     return country && getCountryData(country);
+//   });
 
-  whereAmI(...coords2).then(country => {
-    // getCountryData('portugal');
-    return country && getCountryData(country);
-  });
+//   whereAmI(...coords2).then(country => {
+//     // getCountryData('portugal');
+//     return country && getCountryData(country);
+//   });
 
-  whereAmI(...coords3).then(country => {
-    // getCountryData('portugal');
-    return country && getCountryData(country);
-  });
-});
+//   whereAmI(...coords3).then(country => {
+//     // getCountryData('portugal');
+//     return country && getCountryData(country);
+//   });
+// });
 
 ///////////////////////////////////////
 // Coding Challenge #1
@@ -219,23 +221,45 @@ GOOD LUCK 😀
 // 1.
 const whereAmI = function (lat, lng) {
   // 2.
-  return (
-    fetch(`https://geocode.xyz/${lat},${lng}?geoit=json`)
-      .then(response => {
-        console.log(response);
+  return fetch(`https://geocode.xyz/${lat},${lng}?geoit=json`)
+    .then(response => {
+      console.log(response);
+      return response.json();
+    })
+    .then(data => {
+      if (!data.country) {
+        throw new Error('Limit 3 requests per second');
+      }
+      console.log(data);
+      // 3.
+      console.log(`You are in ${data.state}, ${data.country}`);
+      return data.country;
+    });
+  // 4.
+  // .catch(err => console.log(err))
+};
 
-        return response.json();
-      })
-      .then(data => {
-        if (!data.country) {
-          throw new Error('Limit 3 requests per second');
-        }
-        console.log(data);
-        // 3.
-        console.log(`You are in ${data.state}, ${data.country}`);
-        return data.country;
-      })
-      // 4.
-      .catch(err => console.log(err))
+////////////////////////////////////////////////
+// Promisifying the Geolocation API
+const getPosition = function () {
+  return new Promise((resolve, reject) =>
+    navigator.geolocation.getCurrentPosition(resolve, reject)
   );
 };
+
+btn.addEventListener('click', function () {
+  getPosition()
+    .then(data => {
+      const { latitude, longitude } = data?.coords;
+      return whereAmI(latitude, longitude);
+    })
+    .then(country => {
+      // getCountryData('portugal');
+      return country && getCountryData(country);
+    })
+    .catch(err => {
+      console.log(err);
+      console.log(`${err} 💥💥💥`);
+      renderError(`Something went wrong 💥💥 ${err.message}. Try again`);
+    });
+});
