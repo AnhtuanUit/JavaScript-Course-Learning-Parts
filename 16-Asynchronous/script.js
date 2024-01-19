@@ -263,3 +263,98 @@ btn.addEventListener('click', function () {
       renderError(`Something went wrong 💥💥 ${err.message}. Try again`);
     });
 });
+
+///////////////////////////////////////
+// Coding Challenge #2
+
+/* 
+Build the image loading functionality that I just showed you on the screen.
+
+Tasks are not super-descriptive this time, so that you can figure out some stuff on your own. Pretend you're working on your own 😉
+
+PART 1
+1. Create a function 'createImage' which receives imgPath as an input. This function returns a promise which creates a new image (use document.createElement('img')) and sets the .src attribute to the provided image path. When the image is done loading, append it to the DOM element with the 'images' class, and resolve the promise. The fulfilled value should be the image element itself. In case there is an error loading the image ('error' event), reject the promise.
+
+If this part is too tricky for you, just watch the first part of the solution.
+
+PART 2
+2. Comsume the promise using .then and also add an error handler;
+3. After the image has loaded, pause execution for 2 seconds using the wait function we created earlier;
+4. After the 2 seconds have passed, hide the current image (set display to 'none'), and load a second image (HINT: Use the image element returned by the createImage promise to hide the current image. You will need a global variable for that 😉);
+5. After the second image has loaded, pause execution for 2 seconds again;
+6. After the 2 seconds have passed, hide the current image.
+
+TEST DATA: Images in the img folder. Test the error handler by passing a wrong image path. Set the network speed to 'Fast 3G' in the dev tools Network tab, otherwise images load too fast.
+
+GOOD LUCK 😀
+*/
+// PART 1
+
+const wait = seconds => {
+  return new Promise(resolve => {
+    setTimeout(resolve, seconds * 1000);
+  });
+};
+
+// wait(3).then(b => console.log(b));
+
+// 2.
+
+const imgContainer = document.querySelector('.images');
+
+const createImage = function (imgPath) {
+  return new Promise((resolve, reject) => {
+    console.log('Loading image', imgPath);
+    const imageEl = document.createElement('img');
+    imageEl.alt = 'Image of Coding Challenge #2';
+    imageEl.src = imgPath;
+
+    imageEl.addEventListener('load', () => {
+      // Addpend to DOM
+      imgContainer.append(imageEl);
+
+      resolve(imageEl);
+    });
+    imageEl.addEventListener('error', function (e) {
+      reject(new Error(`Image not found ${imgPath}`));
+    });
+  });
+};
+
+// PART 2
+// 1.
+let imgEl2, imgEl;
+createImage('img/img-1.jpg')
+  .then(iEl => {
+    imgEl = iEl;
+    // 3.
+    return wait(2);
+  })
+  .then(() => {
+    imgEl.style.display = 'none';
+    // 4. Create second img
+    return wait(2);
+  })
+  .then(() => createImage('img/img-2.jpg'))
+  .then(iEl2 => {
+    imgEl2 = iEl2;
+    // 5.
+    return wait(2);
+  })
+  .then(() => {
+    // 6.
+    imgEl2.style.display = 'none';
+  })
+  .catch(err => {
+    renderError(`Load image error`);
+  });
+
+// createImage('img/img-1.jpg').catch(err =>
+//   renderError(`Load image error: ${err.message}`)
+// );
+// createImage('img/img-2.jpg').catch(err =>
+//   renderError(`Load image error: ${err.message}`)
+// );
+// createImage('img/img-3.jpg').catch(err =>
+//   renderError(`Load image error: ${err.message}`)
+// );
