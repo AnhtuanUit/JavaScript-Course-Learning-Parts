@@ -406,7 +406,7 @@ const whereAmI = async function () {
 // console.log('Step 4');
 
 // IIFE
-(async () => {
+/* (async () => {
   console.log('Step 1');
   try {
     const data = await whereAmI();
@@ -415,4 +415,23 @@ const whereAmI = async function () {
     console.log(`Step 2 💥 ${err.message}`);
   }
   console.log('Step 4');
-})();
+})(); */
+
+////////////////////////////////////////////////
+// Running Promieses in Paralel
+
+const get3Countries = async (c1, c2, c3) => {
+  // const [data1] = await getJSON(`https://restcountries.com/v3.1/name/${c1}`, 'Country not found');
+  // await getJSON(`https://restcountries.com/v3.1/name/${c1}`, 'Country not found')
+  // await getJSON(`https://restcountries.com/v3.1/name/${c2}`, 'Country not found')
+  // await  getJSON(`https://restcountries.com/v3.1/name/${c3}`, 'Country not found')
+  const data = await Promise.all([
+    getJSON(`https://restcountries.com/v3.1/name/${c1}`, 'Country not found'),
+    getJSON(`https://restcountries.com/v3.1/name/${c2}`, 'Country not found'),
+    getJSON(`https://restcountries.com/v3.1/name/${c3}`, 'Country not found'),
+  ]);
+
+  data.map(item => console.log(item));
+};
+
+get3Countries('vietnam', 'usa', 'japan');
