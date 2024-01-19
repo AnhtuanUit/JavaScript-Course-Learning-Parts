@@ -219,7 +219,7 @@ GOOD LUCK 😀
 */
 
 // 1.
-const whereAmI = function (lat, lng) {
+/* const whereAmI = function (lat, lng) {
   // 2.
   return fetch(`https://geocode.xyz/${lat},${lng}?geoit=json`)
     .then(response => {
@@ -237,7 +237,7 @@ const whereAmI = function (lat, lng) {
     });
   // 4.
   // .catch(err => console.log(err))
-};
+}; */
 
 ////////////////////////////////////////////////
 // Promisifying the Geolocation API
@@ -290,7 +290,7 @@ GOOD LUCK 😀
 */
 // PART 1
 
-const wait = seconds => {
+/* const wait = seconds => {
   return new Promise(resolve => {
     setTimeout(resolve, seconds * 1000);
   });
@@ -347,7 +347,7 @@ createImage('img/img-1.jpg')
   })
   .catch(err => {
     renderError(`Load image error`);
-  });
+  }); */
 
 // createImage('img/img-1.jpg').catch(err =>
 //   renderError(`Load image error: ${err.message}`)
@@ -358,3 +358,36 @@ createImage('img/img-1.jpg')
 // createImage('img/img-3.jpg').catch(err =>
 //   renderError(`Load image error: ${err.message}`)
 // );
+
+////////////////////////////////////////////////
+// Consuming Promises with Async/Await
+// Error Handling With try...catch
+
+const whereAmI = async function () {
+  try {
+    // Get geo location
+    const pos = await getPosition();
+    const { latitude: lat, longitude: lng } = pos.coords;
+
+    // Reverse geocoding for country name
+    const resGeo = await fetch(`https://geocode.xyz/${lat},${lng}?geoit=json`);
+    console.log(resGeo);
+    const dataGeo = await resGeo.json();
+    if (!dataGeo.country) throw new Error('Limit 3 requests per second');
+    console.log(dataGeo);
+
+    // Country dataGeo
+    const countryRes = await fetch(
+      `https://restcountries.com/v3.1/name/${dataGeo.country}`
+    );
+    const countryData = await countryRes.json();
+    if (!countryData?.[0]) throw new Error('Problem getting country');
+    console.log(countryData);
+    renderCountry(countryData[0]);
+  } catch (err) {
+    console.log(`💥`, err);
+    renderError(`💥 ${err.message}`);
+  }
+};
+
+whereAmI();
