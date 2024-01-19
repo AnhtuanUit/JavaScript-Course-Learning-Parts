@@ -420,7 +420,7 @@ const whereAmI = async function () {
 ////////////////////////////////////////////////
 // Running Promieses in Paralel
 
-const get3Countries = async (c1, c2, c3) => {
+/* const get3Countries = async (c1, c2, c3) => {
   // const [data1] = await getJSON(`https://restcountries.com/v3.1/name/${c1}`, 'Country not found');
   // await getJSON(`https://restcountries.com/v3.1/name/${c1}`, 'Country not found')
   // await getJSON(`https://restcountries.com/v3.1/name/${c2}`, 'Country not found')
@@ -435,3 +435,65 @@ const get3Countries = async (c1, c2, c3) => {
 };
 
 get3Countries('vietnam', 'usa', 'japan');
+ */
+
+////////////////////////////////////////////////
+//  Other Promise Combinators: race, allSettled and any
+
+// Promise.race
+
+(async function () {
+  const res = await Promise.race([
+    getJSON(`https://restcountries.com/v3.1/name/vietnam`),
+    getJSON(`https://restcountries.com/v3.1/name/japan`),
+    getJSON(`https://restcountries.com/v3.1/name/usa`),
+  ]);
+  console.log(res);
+})();
+
+const timeout = function (sec) {
+  return new Promise(function (_, reject) {
+    setTimeout(function () {
+      reject(new Error('Request took too long!'));
+    }, sec * 1000);
+  });
+};
+
+Promise.race([
+  getJSON(`https://restcountries.com/v3.1/name/vietnam`),
+  timeout(5),
+])
+  .then(res => console.log(res[0]))
+  .catch(err => console.error(err));
+
+// Promise.allSettled
+Promise.allSettled([
+  Promise.resolve('Success'),
+  Promise.reject('ERROR'),
+  Promise.resolve('Another success'),
+]).then(res => console.log(res));
+
+Promise.all([
+  Promise.resolve('Success'),
+  Promise.reject('ERROR'),
+  Promise.resolve('Another success'),
+])
+  .then(res => console.log(res))
+  .catch(err => console.error(err));
+
+// Promise.any [ES2021]
+Promise.any([
+  Promise.resolve('Success'),
+  Promise.reject('ERROR'),
+  Promise.resolve('Another success'),
+])
+  .then(res => console.log(res))
+  .catch(err => console.error(err));
+
+Promise.any([
+  Promise.reject('ERROR'),
+  Promise.reject('ERROR'),
+  Promise.reject('ERROR'),
+])
+  .then(res => console.log(res))
+  .catch(err => console.error(err));
