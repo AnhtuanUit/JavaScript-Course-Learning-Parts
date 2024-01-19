@@ -63,7 +63,7 @@ const renderCountry = function (data, className) {
   countriesContainer.insertAdjacentHTML('beforeend', html);
   countriesContainer.style.opacity = 1;
 };
-
+/* 
 const getCountryAndNeighbour = function (country) {
   // AJAX call country 1
   const request = new XMLHttpRequest();
@@ -117,3 +117,55 @@ setTimeout(() => {
     }, 1000);
   }, 1000);
 }, 1000);
+ */
+
+////////////////////////////////////////////////
+// Consuming Promises
+// Chaining Promise
+// Handling Rejected Promises
+// Throwing Erros Manually
+
+// const getJSON = (url, errMsg) => {
+
+// }
+const getJSON = (url, errMsg) =>
+  fetch(url).then(response => {
+    if (!response.ok) throw new Error(`${errMsg} (${reponse.status})`);
+    return response.json();
+  });
+
+const renderError = msg => {
+  countriesContainer.insertAdjacentText('beforeend', msg);
+  countriesContainer.style.opacity = 1;
+};
+
+const getCountryData = function (country) {
+  // Get data country 1 by fetch
+  getJSON(`https://restcountries.com/v3.1/name/${country}`, 'Country not found')
+    .then(data => {
+      renderCountry(data[0]);
+      const [neighbour] = data?.[0].borders;
+
+      if (!neighbour) throw new Error('Neighbour does not exist');
+
+      // Country 2
+      return getJSON(
+        `https://restcountries.com/v3.1/name/${neighbour}`,
+        'Country not found'
+      );
+    })
+    .then(data => renderCountry(data[0], 'neighbour'))
+    .catch(err => {
+      console.log(err);
+      console.log(`${err} 💥💥💥`);
+      renderError(`Something went wrong 💥💥 ${err.message}. Try again`);
+    })
+    .finally(() => {
+      countriesContainer.style.opacity = 1;
+    });
+};
+
+btn.addEventListener('click', function () {
+  // getCountryData('portugal');
+  getCountryData('usa');
+});
