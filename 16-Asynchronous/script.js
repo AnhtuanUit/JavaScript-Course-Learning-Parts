@@ -570,7 +570,7 @@ const loadAll = async imgs => {
     console.log(imageEls);
     imageEls.forEach(imgEl => {
       console.log(imgEl);
-      imgEl.classList.add('paralell');
+      imgEl.classList.add('parallel');
     });
   } catch (err) {
     console.error(err);
