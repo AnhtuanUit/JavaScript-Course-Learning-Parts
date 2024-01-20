@@ -1,0 +1,55 @@
+Arguments: 
+  /Users/tuando/.nvm/versions/node/v16.20.2/bin/node /usr/local/bin/yarn add cloneDeep
+
+PATH: 
+  /Users/tuando/Documents/Workspace/udemy/JavaScript-Course-Learning-Parts/17-Modern-JS-Modules-Tooling/node_modules/.bin:/Users/tuando/Documents/Workspace/udemy/JavaScript-Course-Learning-Parts/node_modules/.bin:/Users/tuando/Documents/Workspace/udemy/node_modules/.bin:/Users/tuando/Documents/Workspace/node_modules/.bin:/Users/tuando/Documents/node_modules/.bin:/Users/tuando/node_modules/.bin:/Users/node_modules/.bin:/node_modules/.bin:/Users/tuando/.nvm/versions/node/v16.20.2/lib/node_modules/npm/node_modules/@npmcli/run-script/lib/node-gyp-bin:/Users/tuando/.nvm/versions/node/v16.20.2/bin:/usr/local/bin:/System/Cryptexes/App/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Library/Apple/usr/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin:/Users/tuando/.nvm/versions/node/v16.20.2/bin
+
+Yarn version: 
+  1.22.10
+
+Node version: 
+  16.20.2
+
+Platform: 
+  darwin x64
+
+Trace: 
+  Error: https://registry.yarnpkg.com/cloneDeep: Not found
+      at Request.params.callback [as _callback] (/usr/local/lib/node_modules/yarn/lib/cli.js:66988:18)
+      at Request.self.callback (/usr/local/lib/node_modules/yarn/lib/cli.js:140662:22)
+      at Request.emit (node:events:513:28)
+      at Request.<anonymous> (/usr/local/lib/node_modules/yarn/lib/cli.js:141634:10)
+      at Request.emit (node:events:513:28)
+      at IncomingMessage.<anonymous> (/usr/local/lib/node_modules/yarn/lib/cli.js:141556:12)
+      at Object.onceWrapper (node:events:627:28)
+      at IncomingMessage.emit (node:events:525:35)
+      at endReadableNT (node:internal/streams/readable:1358:12)
+      at processTicksAndRejections (node:internal/process/task_queues:83:21)
+
+npm manifest: 
+  {
+    "name": "17-modern-js-modules-tooling",
+    "version": "1.0.0",
+    "description": "",
+    "main": "clean.js",
+    "scripts": {
+      "start": "parcel index.html",
+      "build": "parcel build index.html"
+    },
+    "author": "TuanDo",
+    "license": "ISC",
+    "dependencies": {
+      "leaflet": "^1.9.4",
+      "lodash-es": "^4.17.21"
+    },
+    "devDependencies": {
+      "@babel/preset-env": "^7.23.8",
+      "parcel": "^1.12.3"
+    }
+  }
+
+yarn manifest: 
+  No manifest
+
+Lockfile: 
+  No lockfile

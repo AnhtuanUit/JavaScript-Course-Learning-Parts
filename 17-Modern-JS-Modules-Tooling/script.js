@@ -95,7 +95,8 @@ console.log(addToCart);
  */
 ////////////////////////////////////////////////
 // Introduction to NPM
-/* import cloneDeep from './node_modules/lodash-es/cloneDeep.js';
+// import cloneDeep from './node_modules/lodash-es/cloneDeep.js';
+import cloneDeep from 'lodash-es';
 const state = {
   cart: [
     {
@@ -115,4 +116,30 @@ const stateDeepClone = cloneDeep(state);
 state.user.loggedIn = false;
 console.log(stateClone);
 console.log(stateDeepClone);
- */
+
+// Test babel
+if (module.hot) {
+  module.hot.accept();
+}
+
+class Person {
+  // #greeting = 'Hey';
+  constructor(name) {
+    this.name = name;
+    // console.log(`${this.#greeting}, ${this.name}`);
+  }
+}
+
+const tuan = new Person('Tuan');
+
+console.log('Tuan' ?? null);
+
+console.log(cart.find(el => el.quantity >= 2));
+Promise.resolve('TEST').then(x => console.log(x));
+
+//Modular standard library for JavaScript. Includes polyfills for ECMAScript up to 2023
+import 'core-js/stable';
+import 'core-js/stable/array';
+
+// Polifilling async functions
+import 'regenerator-runtime';
