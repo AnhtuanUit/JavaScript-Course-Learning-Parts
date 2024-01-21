@@ -57,9 +57,18 @@ const controllPagination = async function (goToPage) {
 // window.addEventListener('hashchange', controllRecipe);
 // window.addEventListener('load', controllRecipe);
 
+const controllServings = async function (newServings) {
+  // 1) Update the recipe servings (in state)
+  model.updateServings(newServings);
+
+  // 2) Render recipe view
+  recipeView.render(model.state.recipe);
+};
+
 const init = function () {
   recipeView.addHandlerRender(controllRecipe);
   searchView.addHandlerSearch(controllSearchResults);
   paginationView.addHandlerClick(controllPagination);
+  recipeView.addHandlerUpdateServings(controllServings);
 };
 init();

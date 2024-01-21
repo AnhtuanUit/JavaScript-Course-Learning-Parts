@@ -36,7 +36,7 @@ class RecipeView extends View {
         <span class="recipe__info-text">servings</span>
 
         <div class="recipe__info-buttons">
-          <button class="btn--tiny btn--increase-servings">
+          <button class="btn--tiny btn--decrease-servings">
             <svg>
               <use href="${icons}#icon-minus-circle"></use>
             </svg>
@@ -109,6 +109,21 @@ class RecipeView extends View {
 
   addHandlerRender(handler) {
     ['hashchange', 'load'].forEach(ev => window.addEventListener(ev, handler));
+  }
+
+  addHandlerUpdateServings(handler) {
+    const seft = this;
+    this._parentElement.addEventListener('click', function (e) {
+      const btnDescrease = e.target.closest('.btn--decrease-servings');
+      const btnIncrease = e.target.closest('.btn--increase-servings');
+      if (!btnDescrease && !btnIncrease) return;
+      if (btnDescrease) {
+        seft._data.servings > 1 && handler(seft._data.servings - 1);
+      }
+      if (btnIncrease) {
+        handler(seft._data.servings + 1);
+      }
+    });
   }
 }
 
