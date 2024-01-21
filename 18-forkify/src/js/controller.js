@@ -11,7 +11,6 @@ import * as model from './model';
 const controllRecipe = async function () {
   try {
     const id = window.location.hash.slice(1);
-    console.log(id);
     if (!id) return;
 
     recipeView.renderSpinner();
@@ -22,8 +21,7 @@ const controllRecipe = async function () {
     // 2) Render recipe view
     recipeView.render(model.state.recipe);
   } catch (err) {
-    console.error(err);
-    // alert(err);
+    console.error(`${err} 💥💥💥💥💥`);
   }
 };
 
