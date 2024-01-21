@@ -2,6 +2,7 @@ import 'core-js/stable';
 import 'regenerator-runtime/runtime';
 
 import recipeView from './view/recipeView';
+import resultsView from './view/resultsView';
 import searchView from './view/searchView';
 import * as model from './model';
 
@@ -18,6 +19,7 @@ const controllSearchResults = async function () {
   await model.loadSearchRecipes(query);
   console.log(model.state.search);
   // 3) Render searched recipes
+  resultsView.render(model.state.search.recipes);
 };
 
 const controllRecipe = async function () {
