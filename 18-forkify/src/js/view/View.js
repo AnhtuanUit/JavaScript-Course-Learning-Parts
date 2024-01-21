@@ -29,15 +29,15 @@ class View {
 
     newElements.forEach((newEl, i) => {
       const curEl = curElements[i];
-      console.log(curEl, newEl.isEqualNode(curEl));
+      // console.log(curEl, newEl.isEqualNode(curEl));
 
       // Updates changed TEXT
       if (
         !newEl.isEqualNode(curEl) &&
         newEl.firstChild?.nodeValue.trim() !== ''
       ) {
-        console.log('💥', newEl.firstChild.nodeValue.trim());
-        curEl.textContext = newEl.textContent;
+        // console.log('💥', newEl.firstChild.nodeValue.trim());
+        curEl.innerText = newEl.textContent;
       }
 
       // Update changed ATTRIBUTES
