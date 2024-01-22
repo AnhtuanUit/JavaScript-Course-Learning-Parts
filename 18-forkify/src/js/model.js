@@ -14,6 +14,14 @@ export const state = {
 
 export const loadRecipe = async function (id) {
   try {
+    // Load localstorage bookmakrs
+    if (JSON.stringify(state.bookmarks) === '{}') init();
+
+    // Priority load bookmark recipe
+    if (state.bookmarks[id]) {
+      return (state.recipe = state.bookmarks[id]);
+    }
+
     const data = await getJSON(`${API_URL}${id}`);
 
     const { recipe } = data.data;
@@ -82,11 +90,43 @@ export const addBookmark = function () {
 };
 
 export const persistBookmarks = function () {
-  localStorage.setItem('bookmakrs', JSON.stringify(state.bookmarks));
+  localStorage.setItem('bookmarks', JSON.stringify(state.bookmarks));
+};
+
+export const uploadRecipe = async function (uploadRecipe) {
+  // FAKE UPLOAD RECIPE in 1.5 seconds
+  const data = await new Promise(resolv => setTimeout(resolv, 1_500));
+
+  // Parse ingredients from upload reciep data
+  const ingredients = [1, 2, 3, 4, 5, 6]
+    .map(i => {
+      const values = uploadRecipe[`ingredient-${i}`].split(',');
+      // Guard
+      if (values.length !== 3) return undefined;
+      // Format
+      const [quantity, unit, description] = values;
+      return { quantity: +quantity, unit, description };
+    })
+    .filter(ing => ing);
+
+  // Update recipe state
+  state.recipe = {
+    publisher: uploadRecipe.publisher,
+    ingredients,
+    sourceUrl: uploadRecipe.sourceUrl,
+    imageUrl: uploadRecipe.image,
+    title: uploadRecipe.title,
+    servings: +uploadRecipe.servings,
+    cookingTime: +uploadRecipe.cookingTime,
+    id: `${Date.now()}`.slice(-10),
+    bookmarked: true,
+  };
 };
 
 const init = function () {
   const storage = localStorage.getItem('bookmarks');
-  if (storage) state.bookmarks = JSON.parse(storage);
+  if (storage) state.bookmarks = JSON.parse(storage) || {};
+  console.log('SUCCESS LOAD LOCAL STORAGE', state.bookmarks);
 };
+
 init();
