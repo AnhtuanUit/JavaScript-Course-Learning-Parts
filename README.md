@@ -4,7 +4,7 @@ Welcome to my Modern JavaScript Developer Course! This repository showcases my j
 
 ### Video Demo and Live Application
 
-[![initial Live Video Demo](https://img.youtube.com/vi/n7B8Mtk3E80/maxresdefault.jpg)](https://youtu.be/n7B8Mtk3E80)
+[![initial Live Video Demo](https://github.com/AnhtuanUit/JavaScript-Course-Learning-Parts/assets/13465843/8cd3b323-1b81-4051-bca7-ca976278a1cc)](https://youtu.be/n7B8Mtk3E80)
 
 Click on the image above or use this 🎬 [Watch the video](https://youtu.be/n7B8Mtk3E80) to watch the demo video.
 
